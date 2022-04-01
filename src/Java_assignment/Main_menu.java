@@ -305,9 +305,10 @@ public class Main_menu extends javax.swing.JFrame {
     }//GEN-LAST:event_Logout_btnActionPerformed
 
     private void Modifyd_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Modifyd_btnActionPerformed
+       this.toBack();
         Modify md = new Modify();
-        md.show();
-        dispose();
+        md.setVisible(true);
+        md.toFront();
     }//GEN-LAST:event_Modifyd_btnActionPerformed
 
     /**

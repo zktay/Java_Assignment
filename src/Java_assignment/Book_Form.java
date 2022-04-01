@@ -6,6 +6,9 @@ package Java_assignment;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import javax.swing.*;
 
 /**
@@ -47,9 +50,9 @@ public class Book_Form extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         cus_ic = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        cus_ic1 = new javax.swing.JTextField();
+        cus_email = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        cus_ic2 = new javax.swing.JTextField();
+        cus_contact = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         start_date_form = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -102,6 +105,11 @@ public class Book_Form extends javax.swing.JFrame {
         jLabel11.setText("Days Count:");
 
         Book.setText("Book");
+        Book.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BookActionPerformed(evt);
+            }
+        });
 
         Back.setText("Back");
         Back.addActionListener(new java.awt.event.ActionListener() {
@@ -135,8 +143,8 @@ public class Book_Form extends javax.swing.JFrame {
                                 .addComponent(Room_Price, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(cus_name)
                             .addComponent(cus_ic)
-                            .addComponent(cus_ic1)
-                            .addComponent(cus_ic2))
+                            .addComponent(cus_email)
+                            .addComponent(cus_contact))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -181,11 +189,11 @@ public class Book_Form extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                    .addComponent(cus_ic1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cus_email, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                    .addComponent(cus_ic2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cus_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,6 +220,28 @@ public class Book_Form extends javax.swing.JFrame {
         new Sea_view().toFront();
         new Sea_view().setState(javax.swing.JFrame.NORMAL);
     }//GEN-LAST:event_BackActionPerformed
+
+    private void BookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookActionPerformed
+       
+        try{ 
+            File booking_file = new File("file/booking.txt");
+            BufferedWriter bw = new BufferedWriter(new FileWriter(booking_file));
+            bw.write(Room_No.getText());
+            bw.write(Room_Price.getText());
+            bw.write(cus_name.getText());
+            bw.write(cus_ic.getText());
+            bw.write(cus_email.getText());
+            bw.write(cus_contact.getText());
+            bw.write(start_date_form.getText());
+            bw.write(end_date_form.getText());
+            bw.write(days_count.getText());
+            bw.close();
+        }catch (Exception e){
+            System.out.println("Hello");
+                    
+        }
+        
+    }//GEN-LAST:event_BookActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,9 +282,9 @@ public class Book_Form extends javax.swing.JFrame {
     private javax.swing.JButton Book;
     public javax.swing.JLabel Room_No;
     public javax.swing.JLabel Room_Price;
+    private javax.swing.JTextField cus_contact;
+    private javax.swing.JTextField cus_email;
     private javax.swing.JTextField cus_ic;
-    private javax.swing.JTextField cus_ic1;
-    private javax.swing.JTextField cus_ic2;
     private javax.swing.JTextField cus_name;
     public javax.swing.JLabel days_count;
     public javax.swing.JLabel end_date_form;

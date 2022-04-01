@@ -4,9 +4,14 @@
  */
 package Java_assignment;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.*;
+import javax.swing.ImageIcon;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,8 +23,23 @@ public class Modify extends javax.swing.JFrame {
      * Creates new form Modify
      */
     public Modify() {
-        Table();
         initComponents();
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
+        
+        ImageIcon logo = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("pic/logo.jpg")));
+        Image logo_pic1 = logo.getImage();
+        Image logo_pic2 = logo_pic1.getScaledInstance(Logo_pic.getWidth(), Logo_pic.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon logo_pic = new ImageIcon(logo_pic2);
+        Logo_pic.setIcon(logo_pic);
+        
+        ImageIcon admin = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("pic/admin.jpg")));
+        Image adm_pic1 = admin.getImage();
+        Image adm_pic2 = adm_pic1.getScaledInstance(adm_pic.getWidth(), adm_pic.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon admin_pic = new ImageIcon(adm_pic2);
+        adm_pic.setIcon(admin_pic);
+        Table();
     }
 
     /**
@@ -44,6 +64,7 @@ public class Modify extends javax.swing.JFrame {
         Cus_name = new javax.swing.JLabel();
         back = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ZK Resort Room Booking System");
@@ -141,7 +162,7 @@ public class Modify extends javax.swing.JFrame {
                 .addComponent(ViewR_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ViewR_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Logout_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -153,6 +174,45 @@ public class Modify extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Customer Name", "I/C no/ Passport No.", "Contact number", "Email", "Room Sight", "Room ID", "Start Date", "End Date", "Days", "Status", "Checkout"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(4).setResizable(false);
+            jTable1.getColumnModel().getColumn(5).setResizable(false);
+            jTable1.getColumnModel().getColumn(6).setResizable(false);
+            jTable1.getColumnModel().getColumn(7).setResizable(false);
+            jTable1.getColumnModel().getColumn(8).setResizable(false);
+            jTable1.getColumnModel().getColumn(9).setResizable(false);
+            jTable1.getColumnModel().getColumn(10).setResizable(false);
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -160,26 +220,25 @@ public class Modify extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                        .addContainerGap(930, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -239,24 +298,24 @@ public class Modify extends javax.swing.JFrame {
     
     public void Table(){
         try{
-            File j_file = new File("file/Jungle_Room_book.txt");
-            File s_file = new File("file/Sea_Room_book.txt");
-            BufferedReader j_br  = new BufferedReader (new FileReader(j_file));
-            String[][] rec = {
-         { "001", "David", "AUS" },
-         { "002", "Steve", "AUS" },
-         { "003", "Yuvraj", "IND" },
-         { "004", "Kane", "NZ" },
-         { "005", "Ben", "ENG" },
-         { "006", "Eion", "ENG" },
-         { "007", "Miller", "SA" },
-         { "008", "Rohit", "IND" }
-      };
-      String[] header = { "Id", "Player", "Team" };
-      JTable table = new JTable(rec, header);
-      jScrollPane1.add(table);
+            File file = new File("file/booking.txt");
+            BufferedReader br  = new BufferedReader (new FileReader(file));
+            String Booking;
+             while ((Booking = br.readLine())!= null){
+                String[] b_array = Booking.split("\\n");
+                for (String a : b_array){
+                    for (int i = 0; i < b_array.length; i++) {
+                        String[] b_room;
+                        b_room = a.split(", ");
+                        DefaultTableModel table = (DefaultTableModel)jTable1.getModel();
+                        table.addRow (new Object[]{"name", 12345, 123, "tay@mail.com", "Sea", 3, "22-4-2020", "23-4-2020", 1, "Book", "Checkout"
+
+                        });
+                    }
+                }
+             }
         }catch(Exception e){
-            System.out.print("Error");    
+              System.out.print("Error");    
         }
     }  
     
@@ -274,5 +333,6 @@ public class Modify extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
