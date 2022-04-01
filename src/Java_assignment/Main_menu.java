@@ -121,6 +121,11 @@ public class Main_menu extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         Modifyd_btn.setText("Manage");
+        Modifyd_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Modifyd_btnActionPerformed(evt);
+            }
+        });
 
         ViewR_btn.setText("View Receipt");
 
@@ -298,6 +303,12 @@ public class Main_menu extends javax.swing.JFrame {
         ip.show();
         dispose();
     }//GEN-LAST:event_Logout_btnActionPerformed
+
+    private void Modifyd_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Modifyd_btnActionPerformed
+        Modify md = new Modify();
+        md.show();
+        dispose();
+    }//GEN-LAST:event_Modifyd_btnActionPerformed
 
     /**
      * @param args the command line arguments

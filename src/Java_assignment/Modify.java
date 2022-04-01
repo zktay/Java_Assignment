@@ -6,6 +6,7 @@ package Java_assignment;
 
 import java.awt.GridLayout;
 import java.io.*;
+import javax.swing.JTable;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Modify extends javax.swing.JFrame {
      * Creates new form Modify
      */
     public Modify() {
+        Table();
         initComponents();
     }
 
@@ -41,8 +43,7 @@ public class Modify extends javax.swing.JFrame {
         adm_pic = new javax.swing.JLabel();
         Cus_name = new javax.swing.JLabel();
         back = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        Manage_table = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ZK Resort Room Booking System");
@@ -152,19 +153,6 @@ public class Modify extends javax.swing.JFrame {
             }
         });
 
-        Manage_table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(Manage_table);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -174,9 +162,11 @@ public class Modify extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,8 +176,8 @@ public class Modify extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
@@ -252,16 +242,19 @@ public class Modify extends javax.swing.JFrame {
             File j_file = new File("file/Jungle_Room_book.txt");
             File s_file = new File("file/Sea_Room_book.txt");
             BufferedReader j_br  = new BufferedReader (new FileReader(j_file));
-            String s_room_data;
-            jPanel2.setLayout(new GridLayout (10, 1, 0, 5));
-            while ((s_room_data = j_br.readLine())!= null){
-                String[] s_array = s_room_data.split("\\n");
-                for (String a : s_array){
-                    for (int i = 0; i < s_array.length; i++) {
-                        
-                    }
-                }
-            }
+            String[][] rec = {
+         { "001", "David", "AUS" },
+         { "002", "Steve", "AUS" },
+         { "003", "Yuvraj", "IND" },
+         { "004", "Kane", "NZ" },
+         { "005", "Ben", "ENG" },
+         { "006", "Eion", "ENG" },
+         { "007", "Miller", "SA" },
+         { "008", "Rohit", "IND" }
+      };
+      String[] header = { "Id", "Player", "Team" };
+      JTable table = new JTable(rec, header);
+      jScrollPane1.add(table);
         }catch(Exception e){
             System.out.print("Error");    
         }
@@ -273,7 +266,6 @@ public class Modify extends javax.swing.JFrame {
     private javax.swing.JLabel Logo_pic;
     private javax.swing.JButton Logout_btn;
     private javax.swing.JLabel Main_title;
-    private javax.swing.JTable Manage_table;
     private javax.swing.JButton Modify_btn;
     private javax.swing.JButton ViewR_btn;
     private javax.swing.JButton ViewR_btn1;
@@ -281,6 +273,6 @@ public class Modify extends javax.swing.JFrame {
     private javax.swing.JButton back;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
