@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import static java.lang.Integer.parseInt;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -285,13 +286,8 @@ public class Jungle_view extends javax.swing.JFrame {
                 String[] j_array = j_room_data.split("\\n");
                 for (String a : j_array){
                     for (int i = 0; i < j_array.length; i++) {
-                        //jPanel2.add(new Button("Button" + i));
                         String[] j_room;
                         j_room = a.split(", ");
-                        System.out.println(j_room[0]);
-                        System.out.println(j_room[1]);
-                        System.out.println(j_room[2]);
-                        System.out.println(j_room[3]);
                         
                         Border border = BorderFactory.createLineBorder(Color.gray);
                         JPanel panel = new JPanel();
@@ -347,6 +343,11 @@ public class Jungle_view extends javax.swing.JFrame {
                                 bf.setVisible(true);
                                 String counter = dateCounter(Sstart_date, Send_date);
                                 bf.days_count.setText(counter);
+                                int temp, Total;
+                                temp = (parseInt(counter) * 350);
+                                Total =  temp * 110/100;
+                                bf.total_amount.setText("RM " + String.valueOf(Total));
+                                bf.Sight.setText("Jungle");
                             }
                         });
                     }

@@ -6,10 +6,12 @@ package Java_assignment;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import static java.lang.Integer.parseInt;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -307,13 +309,9 @@ public class Sea_view extends javax.swing.JFrame {
                 String[] s_array = s_room_data.split("\\n");
                 for (String a : s_array){
                     for (int i = 0; i < s_array.length; i++) {
-                        //jPanel2.add(new Button("Button" + i));
                         String[] s_room;
                         s_room = a.split(", ");
-                        //System.out.println(s_room[0]);
-                        //System.out.println(s_room[1]);
-                        //System.out.println(s_room[2]);
-                        //System.out.println(s_room[3]);
+                        dateConverter(s_room[2]);
                         
                         Border border = BorderFactory.createLineBorder(Color.gray);
                         JPanel panel = new JPanel();
@@ -370,6 +368,11 @@ public class Sea_view extends javax.swing.JFrame {
                                 bf.setVisible(true);
                                 String counter = dateCounter(Sstart_date, Send_date);
                                 bf.days_count.setText(counter);
+                                int temp, Total;
+                                temp = (parseInt(counter) * 350);
+                                Total =  temp * 110/100;
+                                bf.total_amount.setText("RM " + String.valueOf(Total));
+                                bf.Sight.setText("Sea");
                             }
                         });
                     }
@@ -401,6 +404,27 @@ public class Sea_view extends javax.swing.JFrame {
                 f.printStackTrace();
             }  
         return null;
+    }
+    
+    public void dateConverter(String date1){
+        DateFormat df = new SimpleDateFormat("MM-dd-yyyy"); 
+        Date startDate;
+        try {
+            startDate = df.parse(date1);
+            String newDateString = df.format(startDate);
+            System.out.println(newDateString);
+            
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public boolean dateCompare(Date starting_date, Date ending_date){
+        Main_menu mm = new Main_menu();
+        Date d;
+        d = mm.start_date.getDate();
+        
+        return d.after(starting_date) && d.before(ending_date);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

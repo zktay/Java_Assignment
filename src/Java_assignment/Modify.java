@@ -179,11 +179,11 @@ public class Modify extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Customer Name", "I/C no/ Passport No.", "Contact number", "Email", "Room Sight", "Room ID", "Start Date", "End Date", "Days", "Status", "Checkout"
+                "Room Sight", "Room ID", "Customer Name", "I/C no/ Passport No.", "Email", "Contact number", "Start Date", "End Date", "Days", "Total Amount", "Checkout"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Object.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false, false, false
@@ -308,10 +308,9 @@ public class Modify extends javax.swing.JFrame {
                         String[] b_room;
                         b_room = a.split(", ");
                         DefaultTableModel table = (DefaultTableModel)jTable1.getModel();
-                        table.addRow (new Object[]{b_room[0], 12345, 123, "tay@mail.com", "Sea", 3, "22-4-2020", "23-4-2020", 1, "Book", "Checkout"
+                        table.addRow (new Object[]{b_room[0], b_room[1], b_room[2], b_room[3], b_room[4], b_room[5], b_room[6], b_room[7], b_room[8], b_room[9], "Checkout"
 
                         });
-                        System.out.println(b_room[0]);
                     }
                 }
              }

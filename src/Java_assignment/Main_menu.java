@@ -51,8 +51,7 @@ public class Main_menu extends javax.swing.JFrame {
             end_date.setDate(futureDate);
         }catch (Exception c){
             System.out.println("Error");
-        }
-                
+        }   
     }
         
     /**
@@ -277,9 +276,7 @@ public class Main_menu extends javax.swing.JFrame {
         jv.start_date.setText(st_date);
         jv.end_date.setText(en_date);
         jv.setVisible(true);
-        jv.toFront();
-        
-        
+        jv.toFront();  
     }//GEN-LAST:event_j_view_btnActionPerformed
 
     private void s_view_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_view_btnActionPerformed
@@ -325,6 +322,7 @@ public class Main_menu extends javax.swing.JFrame {
     }
     
     
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Booking_btn;
     private javax.swing.JLabel Cus_name;
@@ -336,13 +334,13 @@ public class Main_menu extends javax.swing.JFrame {
     private javax.swing.JButton ViewR_btn1;
     private javax.swing.JLabel adm_pic;
     private javax.swing.JPanel date_panel;
-    private com.toedter.calendar.JDateChooser end_date;
+    public com.toedter.calendar.JDateChooser end_date;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton j_view_btn;
     private javax.swing.JButton s_view_btn;
-    private com.toedter.calendar.JDateChooser start_date;
+    public com.toedter.calendar.JDateChooser start_date;
     // End of variables declaration//GEN-END:variables
 }
