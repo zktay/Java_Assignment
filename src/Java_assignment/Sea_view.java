@@ -300,6 +300,7 @@ public class Sea_view extends javax.swing.JFrame {
     
     public void Room(){
         this.toBack();
+        DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
         try{
             File file = new File("file/Sea_Room.txt");
             BufferedReader br  = new BufferedReader (new FileReader(file));
@@ -311,7 +312,16 @@ public class Sea_view extends javax.swing.JFrame {
                     for (int i = 0; i < s_array.length; i++) {
                         String[] s_room;
                         s_room = a.split(", ");
-                        dateConverter(s_room[2]);
+                        Date first_date = dateConverter(s_room[2]);
+                        Date last_date = dateConverter(s_room[3]);
+                        Boolean compare_date = dateCompare(first_date, last_date);
+                        if (compare_date == true){
+                            System.out.println("Hello");
+                        }else if (compare_date == false){
+                            System.out.println("HAHA");
+                        }else{
+                            System.out.println("IDK");
+                        }
                         
                         Border border = BorderFactory.createLineBorder(Color.gray);
                         JPanel panel = new JPanel();
@@ -342,7 +352,6 @@ public class Sea_view extends javax.swing.JFrame {
                         panel.add(temp2);
                         panel.add(temp3);
                         panel.add(temp4);
-                        //panel.add(temp5);
                         panel1.add(temp);
                         panel1.add(b1);
                         panel1.add(temp1);
@@ -385,7 +394,7 @@ public class Sea_view extends javax.swing.JFrame {
     
     
     public String dateCounter(String start, String end){
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
             try {
                 Date d1 = sdf.parse(start);
                 Date d2 = sdf.parse(end);
@@ -406,24 +415,23 @@ public class Sea_view extends javax.swing.JFrame {
         return null;
     }
     
-    public void dateConverter(String date1){
-        DateFormat df = new SimpleDateFormat("MM-dd-yyyy"); 
-        Date startDate;
-        try {
-            startDate = df.parse(date1);
-            String newDateString = df.format(startDate);
-            System.out.println(newDateString);
-            
-        } catch (ParseException e) {
-            e.printStackTrace();
+    public Date dateConverter(String date1){
+        DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
+        try{
+            Date date_date = dt.parse(date1);
+            //System.out.println(date_date);
+            return date_date;
+        }catch (Exception e){
+            System.out.print("Error");
         }
+        return null;
     }
     
     public boolean dateCompare(Date starting_date, Date ending_date){
         Main_menu mm = new Main_menu();
         Date d;
         d = mm.start_date.getDate();
-        
+        System.out.println(d);
         return d.after(starting_date) && d.before(ending_date);
     }
     
