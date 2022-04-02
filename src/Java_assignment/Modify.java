@@ -308,9 +308,10 @@ public class Modify extends javax.swing.JFrame {
                         String[] b_room;
                         b_room = a.split(", ");
                         DefaultTableModel table = (DefaultTableModel)jTable1.getModel();
-                        table.addRow (new Object[]{"name", 12345, 123, "tay@mail.com", "Sea", 3, "22-4-2020", "23-4-2020", 1, "Book", "Checkout"
+                        table.addRow (new Object[]{b_room[0], 12345, 123, "tay@mail.com", "Sea", 3, "22-4-2020", "23-4-2020", 1, "Book", "Checkout"
 
                         });
+                        System.out.println(b_room[0]);
                     }
                 }
              }

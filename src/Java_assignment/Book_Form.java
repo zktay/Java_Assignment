@@ -221,25 +221,34 @@ public class Book_Form extends javax.swing.JFrame {
         new Sea_view().setState(javax.swing.JFrame.NORMAL);
     }//GEN-LAST:event_BackActionPerformed
 
+    private JFrame Book_notice;
+    private JFrame Confirm_Frame;
     private void BookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookActionPerformed
-       
-        try{ 
-            File booking_file = new File("file/booking.txt");
-            BufferedWriter bw = new BufferedWriter(new FileWriter(booking_file));
-            bw.write(Room_No.getText());
-            bw.write(Room_Price.getText());
-            bw.write(cus_name.getText());
-            bw.write(cus_ic.getText());
-            bw.write(cus_email.getText());
-            bw.write(cus_contact.getText());
-            bw.write(start_date_form.getText());
-            bw.write(end_date_form.getText());
-            bw.write(days_count.getText());
-            bw.close();
-        }catch (Exception e){
-            System.out.println("Hello");
-                    
+        Confirm_Frame = new JFrame("Booking");
+        if (JOptionPane.showConfirmDialog( Confirm_Frame,"Confirm if you Want to book " + Room_No.getText() + " ?"," Book",
+            JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_OPTION){
+                try{
+                File booking_file = new File("file/booking.txt");
+                BufferedWriter bw = new BufferedWriter(new FileWriter(booking_file));
+                bw.write(Room_No.getText()+ ", ");
+                bw.write(Room_Price.getText()+ ", ");
+                bw.write(cus_name.getText()+ ", ");
+                bw.write(cus_ic.getText()+ ", ");
+                bw.write(cus_email.getText()+ ", ");
+                bw.write(cus_contact.getText()+ ", ");
+                bw.write(start_date_form.getText()+ ", ");
+                bw.write(end_date_form.getText()+ ", ");
+                bw.write(days_count.getText()+ ", ");
+                bw.close();
+                Confirm_Frame = new JFrame("Booking Complete!");
+                JOptionPane.showMessageDialog( Confirm_Frame,"Booking for " + Room_No.getText() + " Completed, Thanks!");
+                dispose();
+                }catch (Exception e){
+                    System.out.println("Error");
+
+                }
         }
+        
         
     }//GEN-LAST:event_BookActionPerformed
 
