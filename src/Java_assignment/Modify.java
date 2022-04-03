@@ -339,8 +339,20 @@ public class Modify extends javax.swing.JFrame {
                     }
                     writer.close(); 
                     reader.close(); 
-                    boolean suceed = file.delete();
+                    boolean succeed = file.delete();
                     boolean successful = tempfile.renameTo(file);
+                    
+                    if (succeed == true){
+                        System.out.println("True");
+                    }else{
+                        System.out.println("Fail to delete the file");
+                    }
+                    if (successful == true){
+                        System.out.println("True");
+                    }else{
+                        System.out.println("Fail to change the name");
+                    }
+                    
                 }catch (Exception e){
                     System.out.print("Delete Line Error");
                     e.printStackTrace();
