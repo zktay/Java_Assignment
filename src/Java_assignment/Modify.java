@@ -390,14 +390,16 @@ public class Modify extends javax.swing.JFrame {
             File file = new File("file/booking.txt");
             BufferedReader br  = new BufferedReader (new FileReader(file));
             String Booking;
+            int f = 0;
             while ((Booking = br.readLine())!= null){
+                f++;
                 String[] b_array = Booking.split("\n");
                 for (String a : b_array){
                     System.out.println(a);
                     for (int i = 0; i < b_array.length; i++) {
                         String[] b_room = a.split(", ");
                         DefaultTableModel table = (DefaultTableModel)jTable1.getModel();
-                        table.addRow (new Object[]{i, b_room[0], b_room[1], b_room[2], b_room[3], b_room[4], b_room[5], b_room[6], b_room[7], b_room[8], b_room[9], b_room[10]});
+                        table.addRow (new Object[]{f, b_room[0], b_room[1], b_room[2], b_room[3], b_room[4], b_room[5], b_room[6], b_room[7], b_room[8], b_room[9], b_room[10]});
                         System.out.println(i);
                     }
                 }
