@@ -337,7 +337,6 @@ public class Main_menu extends javax.swing.JFrame {
         Main_menu mm = new Main_menu();
         Date d;
         d = mm.start_date.getDate();
-        //System.out.println(d);
         return d.after(starting_date) && d.before(ending_date);
     }
     

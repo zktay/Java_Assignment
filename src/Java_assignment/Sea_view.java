@@ -296,12 +296,8 @@ public class Sea_view extends javax.swing.JFrame {
                 new Sea_view().setVisible(true);
             }
         });
-        
-        
-
     }
-    
-    
+      
     public void Room(){
         this.toBack();
         DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
@@ -309,6 +305,7 @@ public class Sea_view extends javax.swing.JFrame {
         File booking = new File ("file/booking.txt");
         ArrayList<String> sea_room = new ArrayList<String>();
         ArrayList<String> VALUES = new ArrayList<String>();
+        jPanel2.setLayout(new GridLayout (10, 1, 0, 5));
         try{
             String s_room_data, b_room_data;
             BufferedReader br  = new BufferedReader (new FileReader(file));
@@ -320,7 +317,7 @@ public class Sea_view extends javax.swing.JFrame {
                             String[] s_room;
                             s_room = a.split(", ");
                             sea_room.add(s_room[0]);
-                            System.out.print(sea_room);
+                            //System.out.println(sea_room);
                         }
                     }
             }
@@ -330,109 +327,108 @@ public class Sea_view extends javax.swing.JFrame {
                     String[] b_room;
                         b_room = b.split(", ");
                         //System.out.println(b_room[1]);
+                        //System.out.println(b_room[6]);
+                        //System.out.println(b_room[7]);
                         String[] strs = { b_room[1], b_room[6], b_room[7] };
                         for(int i =  0; i < strs.length; i++){
-                             VALUES.add(strs[i]);  //something like this?
+                            VALUES.add(strs[i]);
                         }
-                        String room = VALUES.get(0);
-                        String s_first_date = VALUES.get(1);
-                        String s_last_date = VALUES.get(2);
-                        //System.out.println(s_first_date);
-                        Date first_date = dateConverter(s_first_date);
-                        Date last_date = dateConverter(s_last_date);
-                        //System.out.println(first_date);
-                        //System.out.println(last_date);
-                        Boolean compare_date = dateCompare(first_date, last_date);
-                        if (compare_date == true && sea_room.contains(room)){
-                            System.out.println("True");
-                        }else if (compare_date == false){
-                            System.out.println("False");
-                        }
+                        //System.out.println("This is " + VALUES);
                 }
             }
-            //BufferedReader br  = new BufferedReader (new FileReader(file));
-            //String s_room_data;
-            jPanel2.setLayout(new GridLayout (10, 1, 0, 5));
-            while ((s_room_data = br.readLine())!= null){
-                String[] s_array = s_room_data.split("\\n");
-                for (String a : s_array){
-                    for (int i = 0; i < s_array.length; i++) {
-                        String[] s_room;
-                        s_room = a.split(", ");
-                        Date first_date = dateConverter(s_room[2]);
-                        Date last_date = dateConverter(s_room[3]);
-                        Boolean compare_date = dateCompare(first_date, last_date);
-                        if (compare_date == true){
-                        }else if (compare_date == false){
-                            Border border = BorderFactory.createLineBorder(Color.gray);
-                            JPanel panel = new JPanel();
-                            JPanel panel1 = new JPanel();
-                            JPanel panel2 = new JPanel();
-                            panel.setPreferredSize(new Dimension(984, 128));
-                            panel.setLayout(new GridLayout(1, 10, 5, 2));
-                            panel1.setLayout(new GridLayout(3, 1));
-                            panel2.setLayout(new GridLayout(3, 1));
-                            JLabel pack_pic = new JLabel("Pic");
-                            pack_pic.setPreferredSize(new Dimension(48, 18));
-                            JLabel pack_name = new JLabel("Room Name");
-                            JLabel pack_price = new JLabel("Room Price");
-                            JButton b1 = new JButton("Book");
-                            JLabel temp = new JLabel("");
-                            JLabel temp1 = new JLabel("");
-                            JLabel temp2 = new JLabel("");
-                            JLabel temp3 = new JLabel("");
-                            JLabel temp4 = new JLabel("");
-                            JLabel temp5 = new JLabel("");
-                            b1.setPreferredSize(new Dimension(10, 10));
-                            panel.add(pack_pic);
-                            panel2.add(pack_name);
-                            panel2.add(temp5);
-                            panel2.add(pack_price);
-                            panel.add(panel2);
-                            panel.add(temp1);
-                            panel.add(temp2);
-                            panel.add(temp3);
-                            panel.add(temp4);
-                            panel1.add(temp);
-                            panel1.add(b1);
-                            panel1.add(temp1);
-                            panel.add(panel1);
-                            panel.setBorder(border);
-                            panel.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(0.5f)));
-                            jPanel2.add(panel);
-
-                            //System.out.println(a);
-                            pack_name.setText(s_room[0]);
-                            pack_price.setText("RM " + s_room[1]);
-
-                            b1.addActionListener(new ActionListener() {
-
-                                public void actionPerformed(ActionEvent e) {
-                                    Book_Form bf = new Book_Form();
-                                    bf.Room_No.setText(s_room[0]);
-                                    bf.Room_Price.setText("RM " + s_room[1]);
-                                    String Sstart_date = start_date.getText();
-                                    String Send_date = end_date.getText();
-                                    bf.start_date_form.setText(Sstart_date);
-                                    bf.end_date_form.setText(Send_date);
-                                    bf.setVisible(true);
-                                    String counter = dateCounter(Sstart_date, Send_date);
-                                    bf.days_count.setText(counter);
-                                    int temp, Total;
-                                    temp = (parseInt(counter) * 350);
-                                    Total =  temp * 110/100;
-                                    bf.total_amount.setText("RM " + String.valueOf(Total));
-                                    bf.Sight.setText("Sea");
-                                }
-                            });
-                        }else{
-                            System.out.println("Error!");
+                    //for (String a : VALUES){
+                        for ( int i = 0; i < VALUES.size(); i=i+3){
+                            String room = VALUES.get(i);
+                            String s_first_date = VALUES.get(i + 1);
+                            String s_last_date = VALUES.get(i + 2);
+                            System.out.println(s_first_date);
+                            System.out.println(s_last_date);
+                            Date first_date = dateConverter(s_first_date);
+                            Date last_date = dateConverter(s_last_date);
+                            System.out.println(first_date);
+                            System.out.println(last_date);
+                            Boolean compare_date = dateCompare(first_date, last_date);
+                            System.out.println(compare_date);
+                            if (compare_date == true){
+                                sea_room.remove(room);
+                            }else if (compare_date == false){
+                                sea_room.add(room);
+                                System.out.print("Ever Reach here?");
+                            }else{
+                                System.out.print("Error");
+                            }
                         }
-                        
-                        
-                    }
-                }
-            }
+                    //}
+                            //while ((s_room_data = br.readLine())!= null){
+                            //    String[] s_array = s_room_data.split("\\n");
+                            //    for (String a : s_array){
+                                    for (int i = 0; i < sea_room.size(); i++) {
+                                        //String[] s_room;
+                                        //s_room = a.split(", ");
+                                            Border border = BorderFactory.createLineBorder(Color.gray);
+                                            JPanel panel = new JPanel();
+                                            JPanel panel1 = new JPanel();
+                                            JPanel panel2 = new JPanel();
+                                            panel.setPreferredSize(new Dimension(984, 128));
+                                            panel.setLayout(new GridLayout(1, 10, 5, 2));
+                                            panel1.setLayout(new GridLayout(3, 1));
+                                            panel2.setLayout(new GridLayout(3, 1));
+                                            JLabel pack_pic = new JLabel("Pic");
+                                            pack_pic.setPreferredSize(new Dimension(48, 18));
+                                            JLabel pack_name = new JLabel("Room Name");
+                                            JLabel pack_price = new JLabel("Room Price");
+                                            JButton b1 = new JButton("Book");
+                                            JLabel temp = new JLabel("");
+                                            JLabel temp1 = new JLabel("");
+                                            JLabel temp2 = new JLabel("");
+                                            JLabel temp3 = new JLabel("");
+                                            JLabel temp4 = new JLabel("");
+                                            JLabel temp5 = new JLabel("");
+                                            b1.setPreferredSize(new Dimension(10, 10));
+                                            panel.add(pack_pic);
+                                            panel2.add(pack_name);
+                                            panel2.add(temp5);
+                                            panel2.add(pack_price);
+                                            panel.add(panel2);
+                                            panel.add(temp1);
+                                            panel.add(temp2);
+                                            panel.add(temp3);
+                                            panel.add(temp4);
+                                            panel1.add(temp);
+                                            panel1.add(b1);
+                                            panel1.add(temp1);
+                                            panel.add(panel1);
+                                            panel.setBorder(border);
+                                            panel.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(0.5f)));
+                                            jPanel2.add(panel);
+                                            pack_name.setText(sea_room.get(i));
+                                            pack_price.setText("RM 350");
+                                            final int i0 = i;
+                                            b1.addActionListener(new ActionListener() {
+                                                public void actionPerformed(ActionEvent e) {
+                                                    Book_Form bf = new Book_Form();
+                                                    bf.Room_No.setText(sea_room.get(i0));
+                                                    bf.Room_Price.setText("RM 350");
+                                                    String Sstart_date = start_date.getText();
+                                                    String Send_date = end_date.getText();
+                                                    bf.start_date_form.setText(Sstart_date);
+                                                    bf.end_date_form.setText(Send_date);
+                                                    bf.setVisible(true);
+                                                    String counter = dateCounter(Sstart_date, Send_date);
+                                                    bf.days_count.setText(counter);
+                                                    int temp, Total;
+                                                    temp = (parseInt(counter) * 350);
+                                                    Total =  (temp * 110/100) + 10;
+                                                    bf.total_amount.setText("RM " + String.valueOf(Total));
+                                                    bf.Sight.setText("Sea");
+                                                }
+                                            });
+                                    //}
+                                //}
+                            //}
+                        //}
+                //}
+            }      
         }catch(Exception e){
             System.out.println("Error");
         }
@@ -445,9 +441,6 @@ public class Sea_view extends javax.swing.JFrame {
             try {
                 Date d1 = sdf.parse(start);
                 Date d2 = sdf.parse(end);
-
-                // Calucalte time difference
-                // in milliseconds
                 long difference_In_Time
                     = d2.getTime() - d1.getTime();
                 long difference_In_Days
@@ -466,7 +459,6 @@ public class Sea_view extends javax.swing.JFrame {
         DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
         try{
             Date date_date = dt.parse(date1);
-            //System.out.println(date_date);
             return date_date;
         }catch (Exception e){
             System.out.print("Error");
@@ -478,7 +470,6 @@ public class Sea_view extends javax.swing.JFrame {
         Main_menu mm = new Main_menu();
         Date d;
         d = mm.start_date.getDate();
-        //System.out.println(d);
         return d.after(starting_date) && d.before(ending_date);
     }
     

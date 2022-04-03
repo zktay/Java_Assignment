@@ -274,42 +274,7 @@ public class Book_Form extends javax.swing.JFrame {
             JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_OPTION){
                 try{
                     String[] temp= Room_No.getText().split(" ");
-                    int Room_sight = parseInt(temp[1]);
-                    if (Room_sight <= 10){
-                        System.out.print("Jungle");
-                        //File booking_file = new File("file/Jungle_Room.txt");
-                        //BufferedWriter bw = new BufferedWriter(new FileWriter(booking_file, true));
-                        //bw.write(Sight.getText()+ ", ");
-                        //bw.write(Room_No.getText()+ ", ");
-                        //bw.write(cus_name.getText()+ ", ");
-                        //bw.write(cus_ic.getText()+ ", ");
-                        //bw.write(cus_email.getText()+ ", ");
-                        //bw.write(cus_contact.getText()+ ", ");
-                        //bw.write(start_date_form.getText()+ ", ");
-                        //bw.write(end_date_form.getText()+ ", ");
-                        //bw.write(days_count.getText()+ ", ");
-                        //bw.write(total_amount.getText()+ ", ");
-                        //bw.write("Reserved" + "\n");
-                        //bw.close();
-                        
-                    }else if(Room_sight > 10){
-                        System.out.print("Sea");
-                        //File booking_file = new File("file/Sea_Room.txt");
-                        //BufferedWriter bw = new BufferedWriter(new FileWriter(booking_file, true));
-                        //bw.write(Sight.getText()+ ", ");
-                        //bw.write(Room_No.getText()+ ", ");
-                        //bw.write(cus_name.getText()+ ", ");
-                        //bw.write(cus_ic.getText()+ ", ");
-                        //bw.write(cus_email.getText()+ ", ");
-                        //bw.write(cus_contact.getText()+ ", ");
-                        //bw.write(start_date_form.getText()+ ", ");
-                        //bw.write(end_date_form.getText()+ ", ");
-                        //bw.write(days_count.getText()+ ", ");
-                        //bw.write(total_amount.getText()+ ", ");
-                        //bw.write("Reserved" + "\n");
-                        //bw.close();
-                    }
-                    
+                    int Room_sight = parseInt(temp[1]);    
                     File booking_file = new File("file/booking.txt");
                     BufferedWriter bw = new BufferedWriter(new FileWriter(booking_file, true));
                     bw.write(Sight.getText()+ ", ");
@@ -327,6 +292,8 @@ public class Book_Form extends javax.swing.JFrame {
                     Confirm_Frame = new JFrame("Booking Complete!");
                     JOptionPane.showMessageDialog( Confirm_Frame,"Booking for " + Room_No.getText() + " Completed, Thanks!");
                     dispose();
+                    Sea_view sv = new Sea_view();
+                    sv.Room();
                 }catch (Exception e){
                     System.out.println("Error");
                 }
