@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import static java.lang.Integer.parseInt;
+import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTable;
@@ -309,22 +310,27 @@ public class Modify extends javax.swing.JFrame {
             DefaultTableModel tableModel = (DefaultTableModel)this.jTable1.getModel();
             int[] selectedRows = jTable1.getSelectedRows();
             for (int i = 0; i< selectedRows.length; i++){
-                //tableModel.removeRow(selectedRows[i]);
-                String value = jTable1.getModel().getValueAt(selectedRows[i], 1).toString();
-                String startDate = jTable1.getModel().getValueAt(selectedRows[i], 6).toString();
-                String endDate = jTable1.getModel().getValueAt(selectedRows[i], 7).toString();
-                System.out.print(value +", ");
-                System.out.print(startDate +", ");
-                System.out.print(endDate + "\n");
+                    //int modelIndex = jTable1.convertRowIndexToModel(selectedRows[i]);
+                    String first = jTable1.getModel().getValueAt(selectedRows[i], 1).toString();
+                    String second = jTable1.getModel().getValueAt(selectedRows[i], 2).toString();
+                    String third = jTable1.getModel().getValueAt(selectedRows[i], 3).toString();
+                    String fourth = jTable1.getModel().getValueAt(selectedRows[i], 4).toString();
+                    String fifth = jTable1.getModel().getValueAt(selectedRows[i], 5).toString();
+                    String sixth = jTable1.getModel().getValueAt(selectedRows[i], 6).toString();
+                    String seventh = jTable1.getModel().getValueAt(selectedRows[i], 7).toString();
+                    String eighth = jTable1.getModel().getValueAt(selectedRows[i], 8).toString();
+                    String ninth = jTable1.getModel().getValueAt(selectedRows[i], 9).toString();
+                    String tenth = jTable1.getModel().getValueAt(selectedRows[i], 10).toString();
+                    String lineToRemove = first +", "+ second +", "+ third +", "+ fourth +", "+ fifth +", "+ sixth +", "+ seventh +", "+ eighth +", "+ ninth +", "+ tenth +", "+ "Reserved";
+                    tableModel.removeRow(selectedRows[i]);
+                    
                 File file = new File("file/booking.txt");
                 File tempfile = new File("file/tempbooking.txt");
                 try{
                     BufferedReader reader = new BufferedReader(new FileReader(file));
                     BufferedWriter writer = new BufferedWriter(new FileWriter(tempfile));
 
-                    String lineToRemove = value;
                     String currentLine;
-
                     while((currentLine = reader.readLine()) != null) {
                         // trim newline when comparing with lineToRemove
                         String trimmedLine = currentLine.trim();
@@ -333,14 +339,13 @@ public class Modify extends javax.swing.JFrame {
                     }
                     writer.close(); 
                     reader.close(); 
+                    boolean suceed = file.delete();
                     boolean successful = tempfile.renameTo(file);
                 }catch (Exception e){
                     System.out.print("Delete Line Error");
-                }
-                
-                
-            }
-            
+                    e.printStackTrace();
+                } 
+            }   
         }
     }//GEN-LAST:event_deleteMouseClicked
 
@@ -383,7 +388,6 @@ public class Modify extends javax.swing.JFrame {
         JButton checkout_btn = new JButton();
         checkout_btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                
             }
         });
         try{
@@ -395,12 +399,10 @@ public class Modify extends javax.swing.JFrame {
                 f++;
                 String[] b_array = Booking.split("\n");
                 for (String a : b_array){
-                    System.out.println(a);
                     for (int i = 0; i < b_array.length; i++) {
                         String[] b_room = a.split(", ");
                         DefaultTableModel table = (DefaultTableModel)jTable1.getModel();
                         table.addRow (new Object[]{f, b_room[0], b_room[1], b_room[2], b_room[3], b_room[4], b_room[5], b_room[6], b_room[7], b_room[8], b_room[9], b_room[10]});
-                        System.out.println(i);
                     }
                 }
             }
