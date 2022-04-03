@@ -185,11 +185,11 @@ public class Modify extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Room Sight", "Room ID", "Customer Name", "I/C no/ Passport No.", "Email", "Contact number", "Start Date", "End Date", "Days", "Total Amount", "Checkout", "Status"
+                "No.", "Room Sight", "Room ID", "Customer Name", "I/C no/ Passport No.", "Email", "Contact number", "Start Date", "End Date", "Days", "Total Amount", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false, false, false, false
@@ -311,7 +311,33 @@ public class Modify extends javax.swing.JFrame {
             for (int i = 0; i< selectedRows.length; i++){
                 //tableModel.removeRow(selectedRows[i]);
                 String value = jTable1.getModel().getValueAt(selectedRows[i], 1).toString();
-                System.out.print(value);
+                String startDate = jTable1.getModel().getValueAt(selectedRows[i], 6).toString();
+                String endDate = jTable1.getModel().getValueAt(selectedRows[i], 7).toString();
+                System.out.print(value +", ");
+                System.out.print(startDate +", ");
+                System.out.print(endDate + "\n");
+                File file = new File("file/booking.txt");
+                File tempfile = new File("file/tempbooking.txt");
+                try{
+                    BufferedReader reader = new BufferedReader(new FileReader(file));
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(tempfile));
+
+                    String lineToRemove = value;
+                    String currentLine;
+
+                    while((currentLine = reader.readLine()) != null) {
+                        // trim newline when comparing with lineToRemove
+                        String trimmedLine = currentLine.trim();
+                        if(trimmedLine.equals(lineToRemove)) continue;
+                        writer.write(currentLine + System.getProperty("line.separator"));
+                    }
+                    writer.close(); 
+                    reader.close(); 
+                    boolean successful = tempfile.renameTo(file);
+                }catch (Exception e){
+                    System.out.print("Delete Line Error");
+                }
+                
                 
             }
             
@@ -365,13 +391,14 @@ public class Modify extends javax.swing.JFrame {
             BufferedReader br  = new BufferedReader (new FileReader(file));
             String Booking;
             while ((Booking = br.readLine())!= null){
-                String[] b_array = Booking.split("\\n");
+                String[] b_array = Booking.split("\n");
                 for (String a : b_array){
+                    System.out.println(a);
                     for (int i = 0; i < b_array.length; i++) {
-                        String[] b_room;
-                        b_room = a.split(", ");
+                        String[] b_room = a.split(", ");
                         DefaultTableModel table = (DefaultTableModel)jTable1.getModel();
-                        table.addRow (new Object[]{b_room[0], b_room[1], b_room[2], b_room[3], b_room[4], b_room[5], b_room[6], b_room[7], b_room[8], b_room[9], checkout_btn , b_room[10]});
+                        table.addRow (new Object[]{i, b_room[0], b_room[1], b_room[2], b_room[3], b_room[4], b_room[5], b_room[6], b_room[7], b_room[8], b_room[9], b_room[10]});
+                        System.out.println(i);
                     }
                 }
             }
