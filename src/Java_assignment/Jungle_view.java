@@ -354,7 +354,7 @@ public class Jungle_view extends javax.swing.JFrame {
                 }
             }
         }catch(Exception e){
-            System.out.println("Error");
+            System.out.println("Jungle View Error");
         }
     }
     

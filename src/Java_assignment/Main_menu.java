@@ -50,7 +50,7 @@ public class Main_menu extends javax.swing.JFrame {
             String outD = dt.format(futureDate);
             end_date.setDate(futureDate);
         }catch (Exception c){
-            System.out.println("Error");
+            System.out.println("Main Menu Error");
         }   
     }
         
@@ -328,7 +328,7 @@ public class Main_menu extends javax.swing.JFrame {
             //System.out.println(date_date);
             return date_date;
         }catch (Exception e){
-            System.out.print("Error");
+            System.out.print("Main Menu Date Converter Error");
         }
         return null;
     }

@@ -430,7 +430,7 @@ public class Sea_view extends javax.swing.JFrame {
                 //}
             }      
         }catch(Exception e){
-            System.out.println("Error");
+            System.out.println("Sea View Room Error");
         }
     }
     
@@ -461,7 +461,7 @@ public class Sea_view extends javax.swing.JFrame {
             Date date_date = dt.parse(date1);
             return date_date;
         }catch (Exception e){
-            System.out.print("Error");
+            System.out.print("Date Converter Error");
         }
         return null;
     }

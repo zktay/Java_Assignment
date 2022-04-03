@@ -376,7 +376,7 @@ public class Modify extends javax.swing.JFrame {
                 }
             }
         }catch(Exception e){
-              System.out.print("Error");    
+              System.out.print("Modify Error");    
         }
     }  
     
