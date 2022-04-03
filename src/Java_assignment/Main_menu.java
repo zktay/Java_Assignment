@@ -321,7 +321,25 @@ public class Main_menu extends javax.swing.JFrame {
         });
     }
     
+    public Date dateConverter(String date1){
+        DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
+        try{
+            Date date_date = dt.parse(date1);
+            //System.out.println(date_date);
+            return date_date;
+        }catch (Exception e){
+            System.out.print("Error");
+        }
+        return null;
+    }
     
+    public boolean dateCompare(Date starting_date, Date ending_date){
+        Main_menu mm = new Main_menu();
+        Date d;
+        d = mm.start_date.getDate();
+        //System.out.println(d);
+        return d.after(starting_date) && d.before(ending_date);
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Booking_btn;

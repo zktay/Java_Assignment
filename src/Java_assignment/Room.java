@@ -12,27 +12,14 @@ import javax.swing.ImageIcon;
  * @author ZK
  */
 public class Room {
-    private static final String PIC_FOLDER = "D:/VoxellDevelopment/JavaProjs/BookingSystem/pics/";
-    private final float ICON_WIDTH = 300.0f;
 
-    public int idx;
-    public String name;
-    public String imageName;
-    public ImageIcon icon;
+    public String RoomID;
+    public String STARTdate;
+    public String ENDdate;
   
-    public Room(int idx, String name, String imageName)
-    {
-        this.idx = idx;
-        this.name = name;
-        this.imageName = PIC_FOLDER + imageName + ".jpg";
-    
-        icon = new ImageIcon(this.imageName);
-        float width = icon.getIconWidth();
-        float height = icon.getIconHeight();
-        Image image = icon.getImage();
-        image = image.getScaledInstance(
-        (int)ICON_WIDTH, (int)(ICON_WIDTH/width*height), Image.SCALE_SMOOTH
-        );
-        icon.setImage(image);
+    public Room(String RoomID, String STARTdate, String ENDdate) {
+        this.RoomID = RoomID;
+        this.STARTdate = STARTdate;
+        this.ENDdate = ENDdate;
     }
 }

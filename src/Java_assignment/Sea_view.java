@@ -19,10 +19,14 @@ import javax.swing.border.Border;
  *
  * @author ZK
  */
+
 public class Sea_view extends javax.swing.JFrame {
     /**
      * Creates new form Sea_view
      */
+    
+
+    
     public Sea_view() {
         initComponents();
         Toolkit toolkit = getToolkit();
@@ -301,10 +305,53 @@ public class Sea_view extends javax.swing.JFrame {
     public void Room(){
         this.toBack();
         DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
+        File file = new File("file/Sea_Room.txt");
+        File booking = new File ("file/booking.txt");
+        ArrayList<String> sea_room = new ArrayList<String>();
+        ArrayList<String> VALUES = new ArrayList<String>();
         try{
-            File file = new File("file/Sea_Room.txt");
+            String s_room_data, b_room_data;
             BufferedReader br  = new BufferedReader (new FileReader(file));
-            String s_room_data;
+            BufferedReader bk  = new BufferedReader (new FileReader(booking));
+            while ((s_room_data = br.readLine())!= null){
+                    String[] s_array = s_room_data.split("\\n");
+                    for (String a : s_array){
+                        for (int i = 0; i < s_array.length; i++) {
+                            String[] s_room;
+                            s_room = a.split(", ");
+                            sea_room.add(s_room[0]);
+                            System.out.print(sea_room);
+                        }
+                    }
+            }
+            while ((b_room_data = bk.readLine())!= null){
+                String[] b_array = b_room_data.split("\\n");
+                for (String b : b_array){
+                    String[] b_room;
+                        b_room = b.split(", ");
+                        //System.out.println(b_room[1]);
+                        String[] strs = { b_room[1], b_room[6], b_room[7] };
+                        for(int i =  0; i < strs.length; i++){
+                             VALUES.add(strs[i]);  //something like this?
+                        }
+                        String room = VALUES.get(0);
+                        String s_first_date = VALUES.get(1);
+                        String s_last_date = VALUES.get(2);
+                        //System.out.println(s_first_date);
+                        Date first_date = dateConverter(s_first_date);
+                        Date last_date = dateConverter(s_last_date);
+                        //System.out.println(first_date);
+                        //System.out.println(last_date);
+                        Boolean compare_date = dateCompare(first_date, last_date);
+                        if (compare_date == true && sea_room.contains(room)){
+                            System.out.println("True");
+                        }else if (compare_date == false){
+                            System.out.println("False");
+                        }
+                }
+            }
+            //BufferedReader br  = new BufferedReader (new FileReader(file));
+            //String s_room_data;
             jPanel2.setLayout(new GridLayout (10, 1, 0, 5));
             while ((s_room_data = br.readLine())!= null){
                 String[] s_array = s_room_data.split("\\n");
@@ -390,6 +437,7 @@ public class Sea_view extends javax.swing.JFrame {
             System.out.println("Error");
         }
     }
+    
     
     
     public String dateCounter(String start, String end){
