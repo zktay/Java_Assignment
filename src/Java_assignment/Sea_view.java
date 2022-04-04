@@ -354,10 +354,10 @@ public class Sea_view extends javax.swing.JFrame {
                             if (compare_date == true && "Reserved".equals(status) ){
                                 sea_room.remove(room);
                             }else if (compare_date == false){
-                                sea_room.add(room);
+                                //sea_room.add(room);
                                 System.out.print("Ever Reach here?");
                             }else{
-                                System.out.print("Filter Room Error/ Succes");
+                                System.out.print("Filter Room Error/ Succes\n");
                             }
                         }
                     //}
