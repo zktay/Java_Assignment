@@ -329,7 +329,7 @@ public class Sea_view extends javax.swing.JFrame {
                         //System.out.println(b_room[1]);
                         //System.out.println(b_room[6]);
                         //System.out.println(b_room[7]);
-                        String[] strs = { b_room[1], b_room[6], b_room[7] };
+                        String[] strs = { b_room[1], b_room[6], b_room[7], b_room[10] };
                         for(int i =  0; i < strs.length; i++){
                             VALUES.add(strs[i]);
                         }
@@ -337,25 +337,27 @@ public class Sea_view extends javax.swing.JFrame {
                 }
             }
                     //for (String a : VALUES){
-                        for ( int i = 0; i < VALUES.size(); i=i+3){
+                        for ( int i = 0; i < VALUES.size(); i=i+4){
                             String room = VALUES.get(i);
                             String s_first_date = VALUES.get(i + 1);
                             String s_last_date = VALUES.get(i + 2);
+                            String status = VALUES.get(i + 3);
                             System.out.println(s_first_date);
                             System.out.println(s_last_date);
+                            System.out.println(status);
                             Date first_date = dateConverter(s_first_date);
                             Date last_date = dateConverter(s_last_date);
-                            System.out.println(first_date);
-                            System.out.println(last_date);
+                            //System.out.println(first_date);
+                            //System.out.println(last_date);
                             Boolean compare_date = dateCompare(first_date, last_date);
                             //System.out.println(compare_date);
-                            if (compare_date == true){
+                            if (compare_date == true && "Reserved".equals(status) ){
                                 sea_room.remove(room);
                             }else if (compare_date == false){
                                 sea_room.add(room);
                                 System.out.print("Ever Reach here?");
                             }else{
-                                System.out.print("Error");
+                                System.out.print("Filter Room Error/ Succes");
                             }
                         }
                     //}
