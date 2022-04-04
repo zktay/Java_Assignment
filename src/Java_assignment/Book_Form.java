@@ -294,6 +294,8 @@ public class Book_Form extends javax.swing.JFrame {
                     dispose();
                     Sea_view sv = new Sea_view();
                     sv.Room();
+                    sv.jPanel2.repaint();
+                    sv.jPanel2.revalidate();
                 }catch (Exception e){
                     System.out.println("Book Form Error");
                 }

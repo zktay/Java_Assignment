@@ -39,7 +39,6 @@ public class Main_menu extends javax.swing.JFrame {
         Image adm_pic2 = adm_pic1.getScaledInstance(adm_pic.getWidth(), adm_pic.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon admin_pic = new ImageIcon(adm_pic2);
         adm_pic.setIcon(admin_pic);
-        
         try {
             Date date = new Date();
             start_date.setDate(date);
@@ -51,7 +50,7 @@ public class Main_menu extends javax.swing.JFrame {
             end_date.setDate(futureDate);
         }catch (Exception c){
             System.out.println("Main Menu Error");
-        }   
+        } 
     }
         
     /**
@@ -356,8 +355,8 @@ public class Main_menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JButton j_view_btn;
-    private javax.swing.JButton s_view_btn;
+    public javax.swing.JButton j_view_btn;
+    public javax.swing.JButton s_view_btn;
     public com.toedter.calendar.JDateChooser start_date;
     // End of variables declaration//GEN-END:variables
 }

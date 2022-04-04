@@ -15,6 +15,8 @@ import static java.lang.Integer.parseInt;
 import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -186,7 +188,7 @@ public class Modify extends javax.swing.JFrame {
 
             },
             new String [] {
-                "No.", "Room Sight", "Room ID", "Customer Name", "I/C no/ Passport No.", "Email", "Contact number", "Start Date", "End Date", "Days", "Total Amount", "Status"
+                "No.", "Sight", "Room ID", "Customer Name", "I/C no/ Passport No.", "Email", "Contact number", "Start Date", "End Date", "Days", "Total Amount", "Status"
             }
         ) {
             Class[] types = new Class [] {
@@ -208,20 +210,37 @@ public class Modify extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(13);
             jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(15);
             jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(30);
             jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setPreferredWidth(90);
             jTable1.getColumnModel().getColumn(4).setResizable(false);
+            jTable1.getColumnModel().getColumn(4).setPreferredWidth(60);
             jTable1.getColumnModel().getColumn(5).setResizable(false);
+            jTable1.getColumnModel().getColumn(5).setPreferredWidth(60);
             jTable1.getColumnModel().getColumn(6).setResizable(false);
+            jTable1.getColumnModel().getColumn(6).setPreferredWidth(60);
             jTable1.getColumnModel().getColumn(7).setResizable(false);
+            jTable1.getColumnModel().getColumn(7).setPreferredWidth(40);
             jTable1.getColumnModel().getColumn(8).setResizable(false);
+            jTable1.getColumnModel().getColumn(8).setPreferredWidth(40);
             jTable1.getColumnModel().getColumn(9).setResizable(false);
+            jTable1.getColumnModel().getColumn(9).setPreferredWidth(15);
             jTable1.getColumnModel().getColumn(10).setResizable(false);
+            jTable1.getColumnModel().getColumn(10).setPreferredWidth(40);
             jTable1.getColumnModel().getColumn(11).setResizable(false);
+            jTable1.getColumnModel().getColumn(11).setPreferredWidth(30);
         }
 
         checkout.setText("checkout");
+        checkout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                checkoutMouseClicked(evt);
+            }
+        });
         checkout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkoutActionPerformed(evt);
@@ -296,18 +315,20 @@ public class Modify extends javax.swing.JFrame {
     }//GEN-LAST:event_backActionPerformed
 
     private void checkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_checkoutActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
     }//GEN-LAST:event_deleteActionPerformed
-
+private JFrame Delete_Frame;
     private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
+        Delete_Frame = new JFrame("Booking");
         int column = jTable1.getColumnModel().getColumnIndexAtX(evt.getX());
         int row = evt.getY()/jTable1.getRowHeight();
         if(row < jTable1.getRowCount() && row >= 0 && column < jTable1.getColumnCount() && column >= 0){
             Object rowValue = jTable1.getValueAt(row, column);
             DefaultTableModel tableModel = (DefaultTableModel)this.jTable1.getModel();
+            String lineToRemove = null;
             int[] selectedRows = jTable1.getSelectedRows();
             for (int i = 0; i< selectedRows.length; i++){
                     //int modelIndex = jTable1.convertRowIndexToModel(selectedRows[i]);
@@ -321,12 +342,14 @@ public class Modify extends javax.swing.JFrame {
                     String eighth = jTable1.getModel().getValueAt(selectedRows[i], 8).toString();
                     String ninth = jTable1.getModel().getValueAt(selectedRows[i], 9).toString();
                     String tenth = jTable1.getModel().getValueAt(selectedRows[i], 10).toString();
-                    String lineToRemove = first +", "+ second +", "+ third +", "+ fourth +", "+ fifth +", "+ sixth +", "+ seventh +", "+ eighth +", "+ ninth +", "+ tenth +", "+ "Reserved";
+                    String eleventh = jTable1.getModel().getValueAt(selectedRows[i], 11).toString();
+                    lineToRemove = first +", "+ second +", "+ third +", "+ fourth +", "+ fifth +", "+ sixth +", "+ seventh +", "+ eighth +", "+ ninth +", "+ tenth +", "+ eleventh;
                     tableModel.removeRow(selectedRows[i]);
-                    
-                File file = new File("file/booking.txt");
-                File tempfile = new File("file/tempbooking.txt");
+                    System.out.println(lineToRemove);
+            }
                 try{
+                    File file = new File("file/booking.txt");
+                    File tempfile = new File("file/tempbooking.txt");
                     BufferedReader reader = new BufferedReader(new FileReader(file));
                     BufferedWriter writer = new BufferedWriter(new FileWriter(tempfile));
 
@@ -338,28 +361,105 @@ public class Modify extends javax.swing.JFrame {
                         writer.write(currentLine + System.getProperty("line.separator"));
                     }
                     writer.close(); 
-                    reader.close(); 
+                    reader.close();
                     boolean succeed = file.delete();
                     boolean successful = tempfile.renameTo(file);
                     
                     if (succeed == true){
-                        System.out.println("True");
+                        //System.out.println("True");
                     }else{
                         System.out.println("Fail to delete the file");
                     }
                     if (successful == true){
-                        System.out.println("True");
+                        //System.out.println("True");
                     }else{
                         System.out.println("Fail to change the name");
                     }
-                    
+                    Delete_Frame = new JFrame("Delete Complete!");
+                    JOptionPane.showMessageDialog( Delete_Frame,"Delete Completed!");
+                    //jTable1.repaint();
+                    //jTable1.revalidate();
                 }catch (Exception e){
                     System.out.print("Delete Line Error");
                     e.printStackTrace();
                 } 
-            }   
+            //}   
         }
+        jTable1.repaint();
+        jTable1.revalidate();
     }//GEN-LAST:event_deleteMouseClicked
+private JFrame Checkout_Frame;
+    private void checkoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkoutMouseClicked
+        Checkout_Frame = new JFrame("Checkout");
+        int column = jTable1.getColumnModel().getColumnIndexAtX(evt.getX());
+        int row = evt.getY()/jTable1.getRowHeight();
+        if(row < jTable1.getRowCount() && row >= 0 && column < jTable1.getColumnCount() && column >= 0){
+            Object rowValue = jTable1.getValueAt(row, column);
+            DefaultTableModel tableModel = (DefaultTableModel)this.jTable1.getModel();
+            String lineToRemove = null;
+            String lineToAdd = null;
+            int[] selectedRows = jTable1.getSelectedRows();
+            for (int i = 0; i< selectedRows.length; i++){
+                    //int modelIndex = jTable1.convertRowIndexToModel(selectedRows[i]);
+                    String first = jTable1.getModel().getValueAt(selectedRows[i], 1).toString();
+                    String second = jTable1.getModel().getValueAt(selectedRows[i], 2).toString();
+                    String third = jTable1.getModel().getValueAt(selectedRows[i], 3).toString();
+                    String fourth = jTable1.getModel().getValueAt(selectedRows[i], 4).toString();
+                    String fifth = jTable1.getModel().getValueAt(selectedRows[i], 5).toString();
+                    String sixth = jTable1.getModel().getValueAt(selectedRows[i], 6).toString();
+                    String seventh = jTable1.getModel().getValueAt(selectedRows[i], 7).toString();
+                    String eighth = jTable1.getModel().getValueAt(selectedRows[i], 8).toString();
+                    String ninth = jTable1.getModel().getValueAt(selectedRows[i], 9).toString();
+                    String tenth = jTable1.getModel().getValueAt(selectedRows[i], 10).toString();
+                    String eleventh = jTable1.getModel().getValueAt(selectedRows[i], 11).toString();
+                    lineToRemove = first +", "+ second +", "+ third +", "+ fourth +", "+ fifth +", "+ sixth +", "+ seventh +", "+ eighth +", "+ ninth +", "+ tenth +", "+ eleventh;
+                    lineToAdd = first +", "+ second +", "+ third +", "+ fourth +", "+ fifth +", "+ sixth +", "+ seventh +", "+ eighth +", "+ ninth +", "+ tenth +", "+ "Completed";
+                    
+                    
+            }
+                try{
+                    File file = new File("file/booking.txt");
+                    File tempfile = new File("file/tempbooking.txt");
+                    BufferedReader reader = new BufferedReader(new FileReader(file));
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(tempfile));
+
+                    String currentLine;
+                    while((currentLine = reader.readLine()) != null) {
+                        // trim newline when comparing with lineToRemove
+                        String trimmedLine = currentLine.trim();
+                        if(trimmedLine.equals(lineToRemove)) continue;
+                        writer.write(currentLine + System.getProperty("line.separator"));
+                        System.out.println(lineToAdd);
+                        jTable1.repaint();
+                        jTable1.revalidate();
+                    }
+                    writer.write(lineToAdd);
+                    writer.close(); 
+                    reader.close();
+                    boolean succeed = file.delete();
+                    boolean successful = tempfile.renameTo(file);
+                    
+                    if (succeed == true){
+                        //System.out.println("True");
+                    }else{
+                        System.out.println("Fail to delete the file");
+                    }
+                    if (successful == true){
+                        //System.out.println("True");
+                    }else{
+                        System.out.println("Fail to change the name");
+                    }
+                    Checkout_Frame = new JFrame("Checkout Complete!");
+                    JOptionPane.showMessageDialog( Checkout_Frame,"Checkout Completed!");
+                    jTable1.repaint();
+                    jTable1.revalidate();
+                }catch (Exception e){
+                    System.out.print("Delete Line Error");
+                    e.printStackTrace();
+                } 
+            //}   
+        }
+    }//GEN-LAST:event_checkoutMouseClicked
 
     /**
      * @param args the command line arguments
@@ -418,6 +518,7 @@ public class Modify extends javax.swing.JFrame {
                     }
                 }
             }
+            br.close();
         }catch(Exception e){
               System.out.print("Modify Error");    
         }

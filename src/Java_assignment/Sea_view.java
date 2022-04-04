@@ -348,11 +348,11 @@ public class Sea_view extends javax.swing.JFrame {
                             System.out.println(first_date);
                             System.out.println(last_date);
                             Boolean compare_date = dateCompare(first_date, last_date);
-                            System.out.println(compare_date);
+                            //System.out.println(compare_date);
                             if (compare_date == true){
                                 sea_room.remove(room);
                             }else if (compare_date == false){
-                                //sea_room.add(room);
+                                sea_room.add(room);
                                 System.out.print("Ever Reach here?");
                             }else{
                                 System.out.print("Error");
@@ -428,13 +428,15 @@ public class Sea_view extends javax.swing.JFrame {
                             //}
                         //}
                 //}
-            }      
+            br.close();
+            bk.close();
+            }
+            
         }catch(Exception e){
             System.out.println("Sea View Room Error");
+            e.printStackTrace();
         }
     }
-    
-    
     
     public String dateCounter(String start, String end){
             SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy");
@@ -489,7 +491,7 @@ public class Sea_view extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    public javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JLabel start_date;

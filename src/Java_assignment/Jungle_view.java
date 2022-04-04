@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import static java.lang.Integer.parseInt;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -277,96 +278,135 @@ public class Jungle_view extends javax.swing.JFrame {
     }
     
     public void Room(){
+        this.toBack();
+        DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
+        File file = new File("file/Jungle_Room.txt");
+        File booking = new File ("file/booking.txt");
+        ArrayList<String> jungle_room = new ArrayList<String>();
+        ArrayList<String> VALUES = new ArrayList<String>();
+        jPanel2.setLayout(new GridLayout (10, 1, 0, 5));
         try{
-            File file = new File("file/Jungle_Room.txt");
+            String j_room_data, b_room_data;
             BufferedReader br  = new BufferedReader (new FileReader(file));
-            String j_room_data;
-            jPanel2.setLayout(new GridLayout (10, 1, 0, 5));
+            BufferedReader bk  = new BufferedReader (new FileReader(booking));
             while ((j_room_data = br.readLine())!= null){
-                String[] j_array = j_room_data.split("\\n");
-                for (String a : j_array){
-                    for (int i = 0; i < j_array.length; i++) {
-                        String[] j_room;
-                        j_room = a.split(", ");
-                        
-                        Border border = BorderFactory.createLineBorder(Color.gray);
-                        JPanel panel = new JPanel();
-                        JPanel panel1 = new JPanel();
-                        JPanel panel2 = new JPanel();
-                        panel.setPreferredSize(new Dimension(984, 128));
-                        panel.setLayout(new GridLayout(1, 10, 5, 2));
-                        panel1.setLayout(new GridLayout(3, 1));
-                        panel2.setLayout(new GridLayout(3, 1));
-                        JLabel pack_pic = new JLabel("Pic");
-                        pack_pic.setPreferredSize(new Dimension(48, 18));
-                        JLabel pack_name = new JLabel("Room Name");
-                        JLabel pack_price = new JLabel("Room Price");
-                        JButton b1 = new JButton("Book");
-                        JLabel temp = new JLabel("");
-                        JLabel temp1 = new JLabel("");
-                        JLabel temp2 = new JLabel("");
-                        JLabel temp3 = new JLabel("");
-                        JLabel temp4 = new JLabel("");
-                        JLabel temp5 = new JLabel("");
-                        b1.setPreferredSize(new Dimension(10, 10));
-                        panel.add(pack_pic);
-                        panel2.add(pack_name);
-                        panel2.add(temp5);
-                        panel2.add(pack_price);
-                        panel.add(panel2);
-                        panel.add(temp1);
-                        panel.add(temp2);
-                        panel.add(temp3);
-                        panel.add(temp4);
-                        panel1.add(temp);
-                        panel1.add(b1);
-                        panel1.add(temp1);
-                        panel.add(panel1);
-                        panel.setBorder(border);
-                        panel.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(0.5f)));
-                        jPanel2.add(panel);
-                        
-                        System.out.println(a);
-                        pack_name.setText(j_room[0]);
-                        pack_price.setText("RM " + j_room[1]);
-                        
-                        b1.addActionListener(new ActionListener() {
-
-                            public void actionPerformed(ActionEvent e) {
-                                Book_Form bf = new Book_Form();
-                                bf.Room_No.setText(j_room[0]);
-                                bf.Room_Price.setText("RM " + j_room[1]);
-                                String Sstart_date = start_date.getText();
-                                String Send_date = end_date.getText();
-                                bf.start_date_form.setText(Sstart_date);
-                                bf.end_date_form.setText(Send_date);
-                                bf.setVisible(true);
-                                String counter = dateCounter(Sstart_date, Send_date);
-                                bf.days_count.setText(counter);
-                                int temp, Total;
-                                temp = (parseInt(counter) * 350);
-                                Total =  temp * 110/100;
-                                bf.total_amount.setText("RM " + String.valueOf(Total));
-                                bf.Sight.setText("Jungle");
-                            }
-                        });
+                    String[] s_array = j_room_data.split("\\n");
+                    for (String a : s_array){
+                        for (int i = 0; i < s_array.length; i++) {
+                            String[] s_room;
+                            s_room = a.split(", ");
+                            jungle_room.add(s_room[0]);
+                            //System.out.println(sea_room);
+                        }
                     }
+            }
+            while ((b_room_data = bk.readLine())!= null){
+                String[] b_array = b_room_data.split("\\n");
+                for (String b : b_array){
+                    String[] b_room;
+                        b_room = b.split(", ");
+                        String[] strs = { b_room[1], b_room[6], b_room[7] };
+                        for(int i =  0; i < strs.length; i++){
+                            VALUES.add(strs[i]);
+                        }
                 }
             }
+                        for ( int i = 0; i < VALUES.size(); i=i+3){
+                            String room = VALUES.get(i);
+                            String s_first_date = VALUES.get(i + 1);
+                            String s_last_date = VALUES.get(i + 2);
+                            System.out.println(s_first_date);
+                            System.out.println(s_last_date);
+                            Date first_date = dateConverter(s_first_date);
+                            Date last_date = dateConverter(s_last_date);
+                            System.out.println(first_date);
+                            System.out.println(last_date);
+                            Boolean compare_date = dateCompare(first_date, last_date);
+                            //System.out.println(compare_date);
+                            if (compare_date == true){
+                                jungle_room.remove(room);
+                            }else if (compare_date == false){
+                                jungle_room.add(room);
+                                System.out.print("Ever Reach here?");
+                            }else{
+                                System.out.print("Error");
+                            }
+                        }
+                                    for (int i = 0; i < jungle_room.size(); i++) {
+                                            Border border = BorderFactory.createLineBorder(Color.gray);
+                                            JPanel panel = new JPanel();
+                                            JPanel panel1 = new JPanel();
+                                            JPanel panel2 = new JPanel();
+                                            panel.setPreferredSize(new Dimension(984, 128));
+                                            panel.setLayout(new GridLayout(1, 10, 5, 2));
+                                            panel1.setLayout(new GridLayout(3, 1));
+                                            panel2.setLayout(new GridLayout(3, 1));
+                                            JLabel pack_pic = new JLabel("Pic");
+                                            pack_pic.setPreferredSize(new Dimension(48, 18));
+                                            JLabel pack_name = new JLabel("Room Name");
+                                            JLabel pack_price = new JLabel("Room Price");
+                                            JButton b1 = new JButton("Book");
+                                            JLabel temp = new JLabel("");
+                                            JLabel temp1 = new JLabel("");
+                                            JLabel temp2 = new JLabel("");
+                                            JLabel temp3 = new JLabel("");
+                                            JLabel temp4 = new JLabel("");
+                                            JLabel temp5 = new JLabel("");
+                                            b1.setPreferredSize(new Dimension(10, 10));
+                                            panel.add(pack_pic);
+                                            panel2.add(pack_name);
+                                            panel2.add(temp5);
+                                            panel2.add(pack_price);
+                                            panel.add(panel2);
+                                            panel.add(temp1);
+                                            panel.add(temp2);
+                                            panel.add(temp3);
+                                            panel.add(temp4);
+                                            panel1.add(temp);
+                                            panel1.add(b1);
+                                            panel1.add(temp1);
+                                            panel.add(panel1);
+                                            panel.setBorder(border);
+                                            panel.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(0.5f)));
+                                            jPanel2.add(panel);
+                                            pack_name.setText(jungle_room.get(i));
+                                            pack_price.setText("RM 350");
+                                            final int i0 = i;
+                                            b1.addActionListener(new ActionListener() {
+                                                public void actionPerformed(ActionEvent e) {
+                                                    Book_Form bf = new Book_Form();
+                                                    bf.Room_No.setText(jungle_room.get(i0));
+                                                    bf.Room_Price.setText("RM 350");
+                                                    String Sstart_date = start_date.getText();
+                                                    String Send_date = end_date.getText();
+                                                    bf.start_date_form.setText(Sstart_date);
+                                                    bf.end_date_form.setText(Send_date);
+                                                    bf.setVisible(true);
+                                                    String counter = dateCounter(Sstart_date, Send_date);
+                                                    bf.days_count.setText(counter);
+                                                    int temp, Total;
+                                                    temp = (parseInt(counter) * 350);
+                                                    Total =  (temp * 110/100) + 10;
+                                                    bf.total_amount.setText("RM " + String.valueOf(Total));
+                                                    bf.Sight.setText("Jungle");
+                                                }
+                                            });
+            br.close();
+            bk.close();
+            }
+            
         }catch(Exception e){
-            System.out.println("Jungle View Error");
+            System.out.println("Sea View Room Error");
+            e.printStackTrace();
         }
     }
     
     
     public String dateCounter(String start, String end){
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy");
             try {
                 Date d1 = sdf.parse(start);
                 Date d2 = sdf.parse(end);
-
-                // Calucalte time difference
-                // in milliseconds
                 long difference_In_Time
                     = d2.getTime() - d1.getTime();
                 long difference_In_Days
@@ -379,6 +419,24 @@ public class Jungle_view extends javax.swing.JFrame {
                 f.printStackTrace();
             }  
         return null;
+    }
+    
+    public Date dateConverter(String date1){
+        DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
+        try{
+            Date date_date = dt.parse(date1);
+            return date_date;
+        }catch (Exception e){
+            System.out.print("Date Converter Error");
+        }
+        return null;
+    }
+    
+    public boolean dateCompare(Date starting_date, Date ending_date){
+        Main_menu mm = new Main_menu();
+        Date d;
+        d = mm.start_date.getDate();
+        return d.after(starting_date) && d.before(ending_date);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Booking_btn1;
