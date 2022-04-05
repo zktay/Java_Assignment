@@ -74,6 +74,7 @@ public class Modify extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         checkout = new javax.swing.JButton();
         delete = new javax.swing.JButton();
+        receipt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ZK Resort Room Booking System");
@@ -259,6 +260,18 @@ public class Modify extends javax.swing.JFrame {
             }
         });
 
+        receipt.setText("View Receipt");
+        receipt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                receiptMouseClicked(evt);
+            }
+        });
+        receipt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                receiptActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -272,6 +285,8 @@ public class Modify extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(receipt)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(delete)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(checkout)
@@ -289,7 +304,8 @@ public class Modify extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                             .addComponent(checkout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(delete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(delete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(receipt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -461,6 +477,52 @@ private JFrame Checkout_Frame;
         }
     }//GEN-LAST:event_checkoutMouseClicked
 
+    private void receiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receiptActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_receiptActionPerformed
+
+    private void receiptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_receiptMouseClicked
+       Receipt rc = new Receipt();
+        int column = jTable1.getColumnModel().getColumnIndexAtX(evt.getX());
+        int row = evt.getY()/jTable1.getRowHeight();
+        if(row < jTable1.getRowCount() && row >= 0 && column < jTable1.getColumnCount() && column >= 0){
+            Object rowValue = jTable1.getValueAt(row, column);
+            DefaultTableModel tableModel = (DefaultTableModel)this.jTable1.getModel();
+            String lineToView = null;
+            int[] selectedRows = jTable1.getSelectedRows();
+            for (int i = 0; i< selectedRows.length; i++){
+                    //int modelIndex = jTable1.convertRowIndexToModel(selectedRows[i]);
+                    String first = jTable1.getModel().getValueAt(selectedRows[i], 1).toString();
+                    String second = jTable1.getModel().getValueAt(selectedRows[i], 2).toString();
+                    String third = jTable1.getModel().getValueAt(selectedRows[i], 3).toString();
+                    String fourth = jTable1.getModel().getValueAt(selectedRows[i], 4).toString();
+                    String fifth = jTable1.getModel().getValueAt(selectedRows[i], 5).toString();
+                    String sixth = jTable1.getModel().getValueAt(selectedRows[i], 6).toString();
+                    String seventh = jTable1.getModel().getValueAt(selectedRows[i], 7).toString();
+                    String eighth = jTable1.getModel().getValueAt(selectedRows[i], 8).toString();
+                    String ninth = jTable1.getModel().getValueAt(selectedRows[i], 9).toString();
+                    String tenth = jTable1.getModel().getValueAt(selectedRows[i], 10).toString();
+                    String eleventh = jTable1.getModel().getValueAt(selectedRows[i], 11).toString();
+                    lineToView = first +", "+ second +", "+ third +", "+ fourth +", "+ fifth +", "+ sixth +", "+ seventh +", "+ eighth +", "+ ninth +", "+ tenth +", "+ eleventh;
+                    rc.Sight.setText(first);
+                    rc.Room_No.setText(second);
+                    rc.name.setText(third);
+                    rc.ic.setText(fourth);
+                    rc.email.setText(fifth);
+                    rc.contacts.setText(sixth);
+                    rc.start_date.setText(seventh);
+                    rc.end_date.setText(eighth);
+                    rc.days_count1.setText(ninth);
+                    rc.total_amount.setText(tenth);
+                    rc.setVisible(true);
+                    
+            }
+            
+        }
+        jTable1.repaint();
+        jTable1.revalidate();
+    }//GEN-LAST:event_receiptMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -541,5 +603,6 @@ private JFrame Checkout_Frame;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton receipt;
     // End of variables declaration//GEN-END:variables
 }
