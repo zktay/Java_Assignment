@@ -20,7 +20,8 @@ import javax.swing.border.Border;
  * @author ZK
  */
 public class Jungle_view extends javax.swing.JFrame {
-
+    private static final String PIC_FOLDER = "pic/Jungle/";
+    public ImageIcon icon;
     /**
      * Creates new form Jungle_view
      */
@@ -305,16 +306,17 @@ public class Jungle_view extends javax.swing.JFrame {
                 for (String b : b_array){
                     String[] b_room;
                         b_room = b.split(", ");
-                        String[] strs = { b_room[1], b_room[6], b_room[7] };
+                        String[] strs = { b_room[1], b_room[6], b_room[7], b_room[10] };
                         for(int i =  0; i < strs.length; i++){
                             VALUES.add(strs[i]);
                         }
                 }
             }
-                        for ( int i = 0; i < VALUES.size(); i=i+3){
+                        for ( int i = 0; i < VALUES.size(); i=i+4){
                             String room = VALUES.get(i);
                             String s_first_date = VALUES.get(i + 1);
                             String s_last_date = VALUES.get(i + 2);
+                            String status = VALUES.get(i + 3);
                             System.out.println(s_first_date);
                             System.out.println(s_last_date);
                             Date first_date = dateConverter(s_first_date);
@@ -323,13 +325,13 @@ public class Jungle_view extends javax.swing.JFrame {
                             System.out.println(last_date);
                             Boolean compare_date = dateCompare(first_date, last_date);
                             //System.out.println(compare_date);
-                            if (compare_date == true){
+                            if (compare_date == true && "Reserved".equals(status) ){
                                 jungle_room.remove(room);
                             }else if (compare_date == false){
-                                jungle_room.add(room);
+                                //sea_room.add(room);
                                 System.out.print("Ever Reach here?");
                             }else{
-                                System.out.print("Error");
+                                System.out.print("Filter Room Error/ Succes\n");
                             }
                         }
                                     for (int i = 0; i < jungle_room.size(); i++) {
@@ -370,6 +372,16 @@ public class Jungle_view extends javax.swing.JFrame {
                                             panel.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(0.5f)));
                                             jPanel2.add(panel);
                                             pack_name.setText(jungle_room.get(i));
+                                            int f = i + 1 ;
+                                            System.out.println("This is width:" + pack_pic.getWidth());
+                                            String pic_counter = String.valueOf(f);
+                                            System.out.println(pic_counter);
+                                            ImageIcon jun_pic1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource(PIC_FOLDER + pic_counter + ".jpg")));
+                                            Image j_pic1 = jun_pic1.getImage();
+                                            //Image s_pic2 = s_pic1.getScaledInstance(pack_pic.getWidth(), pack_pic.getHeight(), Image.SCALE_SMOOTH);
+                                            Image j_pic2 = j_pic1.getScaledInstance(170, 190, Image.SCALE_SMOOTH);
+                                            ImageIcon jun_pic = new ImageIcon(j_pic2);
+                                            pack_pic.setIcon(jun_pic);
                                             pack_price.setText("RM 350");
                                             final int i0 = i;
                                             b1.addActionListener(new ActionListener() {

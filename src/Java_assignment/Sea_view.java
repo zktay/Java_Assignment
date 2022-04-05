@@ -15,17 +15,19 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 /**
  *
  * @author ZK
  */
 
 public class Sea_view extends javax.swing.JFrame {
+    private static final String PIC_FOLDER = "pic/Sea/";
+    public ImageIcon icon;
     /**
      * Creates new form Sea_view
      */
-    
-
     
     public Sea_view() {
         initComponents();
@@ -303,8 +305,9 @@ public class Sea_view extends javax.swing.JFrame {
         DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
         File file = new File("file/Sea_Room.txt");
         File booking = new File ("file/booking.txt");
-        ArrayList<String> sea_room = new ArrayList<String>();
-        ArrayList<String> VALUES = new ArrayList<String>();
+        ArrayList<String> sea_room = new ArrayList<>();
+        ArrayList<String> room_pic = new ArrayList<>();
+        ArrayList<String> VALUES = new ArrayList<>();
         jPanel2.setLayout(new GridLayout (10, 1, 0, 5));
         try{
             String s_room_data, b_room_data;
@@ -317,8 +320,11 @@ public class Sea_view extends javax.swing.JFrame {
                             String[] s_room;
                             s_room = a.split(", ");
                             sea_room.add(s_room[0]);
+                            room_pic.add(s_room[1]);
                             //System.out.println(sea_room);
+                            //System.out.println(room_pic);
                         }
+                        
                     }
             }
             while ((b_room_data = bk.readLine())!= null){
@@ -404,6 +410,20 @@ public class Sea_view extends javax.swing.JFrame {
                                             panel.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(0.5f)));
                                             jPanel2.add(panel);
                                             pack_name.setText(sea_room.get(i));
+                                            int f = i + 1 ;
+                                            System.out.println("This is width:" + pack_pic.getWidth());
+                                            String pic_counter = String.valueOf(f);
+                                            System.out.println(pic_counter);
+                                            ImageIcon sea_pic1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource(PIC_FOLDER + pic_counter + ".jpg")));
+                                            Image s_pic1 = sea_pic1.getImage();
+                                            //Image s_pic2 = s_pic1.getScaledInstance(pack_pic.getWidth(), pack_pic.getHeight(), Image.SCALE_SMOOTH);
+                                            Image s_pic2 = s_pic1.getScaledInstance(170, 190, Image.SCALE_SMOOTH);
+                                            ImageIcon sea_pic = new ImageIcon(s_pic2);
+                                            pack_pic.setIcon(sea_pic);
+                                            
+                                            
+                                            //pack_pic.setIcon(new ImageIcon(PIC_FOLDER + i + "jpg"));
+                                            //pack_pic.setIcon(new ImageIcon(imgList.get(i)));
                                             pack_price.setText("RM 350");
                                             final int i0 = i;
                                             b1.addActionListener(new ActionListener() {
