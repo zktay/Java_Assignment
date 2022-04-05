@@ -296,11 +296,20 @@
           </Properties>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="start_date">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="d, MMM, y"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="start_dateMouseClicked"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="end_date">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="d, MMM, y"/>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>

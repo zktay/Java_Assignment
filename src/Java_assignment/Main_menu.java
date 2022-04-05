@@ -10,7 +10,10 @@ import java.util.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -200,6 +203,15 @@ public class Main_menu extends javax.swing.JFrame {
 
         jLabel2.setText("End Date:");
 
+        start_date.setDateFormatString("d, MMM, y");
+        start_date.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                start_dateMouseClicked(evt);
+            }
+        });
+
+        end_date.setDateFormatString("d, MMM, y");
+
         javax.swing.GroupLayout date_panelLayout = new javax.swing.GroupLayout(date_panel);
         date_panel.setLayout(date_panelLayout);
         date_panelLayout.setHorizontalGroup(
@@ -280,12 +292,38 @@ public class Main_menu extends javax.swing.JFrame {
 
     private void s_view_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_view_btnActionPerformed
         this.toBack();
-        Sea_view sv = new Sea_view();
+        DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
+        
         Date get_st_date = start_date.getDate();
         Date get_en_date = end_date.getDate();
-        DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
+        
         String st_date = dt.format(get_st_date);
         String en_date = dt.format(get_en_date);
+        Sea_view sv = new Sea_view(st_date, en_date);
+        /**
+        String ST = (new java.text.SimpleDateFormat("dd-MM-yyyy"))
+        .format(start_date.getDate());
+        System.out.println(ST);
+        Date temp1= null;
+        try {
+            temp1 = dt.parse(ST);
+        } catch (ParseException ex) {
+            Logger.getLogger(Main_menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        String ED = (new java.text.SimpleDateFormat("dd-MM-yyyy"))
+        .format(end_date.getDate());
+        System.out.println(ED);
+        Date temp2= null;
+        try {
+            temp2 = dt.parse(ED);
+        } catch (ParseException ex) {
+            Logger.getLogger(Main_menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        start_date.setDate(temp1);
+        sv.start_date.setText(ST);
+        sv.end_date.setText(ED);
+        * */
         sv.start_date.setText(st_date);
         sv.end_date.setText(en_date);
         sv.setVisible(true);
@@ -306,6 +344,10 @@ public class Main_menu extends javax.swing.JFrame {
         md.setVisible(true);
         md.toFront();
     }//GEN-LAST:event_Modifyd_btnActionPerformed
+
+    private void start_dateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_start_dateMouseClicked
+
+    }//GEN-LAST:event_start_dateMouseClicked
 
     /**
      * @param args the command line arguments

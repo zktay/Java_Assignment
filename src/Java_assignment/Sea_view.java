@@ -17,12 +17,14 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author ZK
  */
 
-public class Sea_view extends javax.swing.JFrame {
+public class Sea_view extends javax.swing.JFrame{
     private static final String PIC_FOLDER = "pic/";
     public ImageIcon icon;
     /**
@@ -48,6 +50,17 @@ public class Sea_view extends javax.swing.JFrame {
         adm_pic.setIcon(admin_pic);
         Room();
         
+    }
+    String temp1;
+    String temp2;
+    Sea_view(String st_date, String en_date) {
+        initComponents();
+        System.out.println("THIS IDK " +st_date);
+        this.temp1 = st_date;
+        this.temp2 = en_date;
+        this.start_date.setText(temp1);
+        this.end_date.setText(temp2);
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     
@@ -345,23 +358,60 @@ public class Sea_view extends javax.swing.JFrame {
                             String s_first_date = VALUES.get(i + 1);
                             String s_last_date = VALUES.get(i + 2);
                             String status = VALUES.get(i + 3);
-                            System.out.println(s_first_date);
-                            System.out.println(s_last_date);
-                            System.out.println(status);
+                            //System.out.println(s_first_date);
+                            //System.out.println(s_last_date);
+                            //System.out.println(status);
+                            Main_menu mm = new Main_menu();
+                            Date d = mm.start_date.getDate();
+                            //System.out.println("THIS IS IT " + d);
+                            
+                            
                             Date first_date = dateConverter(s_first_date);
                             Date last_date = dateConverter(s_last_date);
-                            //System.out.println(first_date);
-                            //System.out.println(last_date);
-                            Boolean compare_date = dateCompare(first_date, last_date);
-                            //System.out.println(compare_date);
-                            if (compare_date == true && "Reserved".equals(status) ){
-                                sea_room.remove(room);
-                            }else if (compare_date == false){
-                                //sea_room.add(room);
-                                System.out.print("Ever Reach here?");
-                            }else{
-                                System.out.print("Filter Room Error/ Succes\n");
+                            //System.out.println("START " + first_date);
+                            //System.out.println("END " + last_date);
+                            /**
+                            String testing = start_date.getText();
+                            System.out.println("Testing this " + testing);
+                            String idk = start_date.getText();
+                             System.out.println("IDK this " + idk);
+                            try {
+                                Date temp = dt.parse(idk);
+                                if (temp.after(first_date) && temp.before(last_date) && "Reserved".equals(status)){
+                                    sea_room.remove(room);
+                                }else if (temp.after(first_date) && temp.before(last_date) == false ){
+                                    //sea_room.add(room);
+                                }else{
+                                    System.out.println("Filter Room Error/ Succes\n");
+                                }
+                                    
+                                
+                                
+                           
+                            
+                                
+                            } catch (ParseException ex) {
+                                Logger.getLogger(Sea_view.class.getName()).log(Level.SEVERE, null, ex);
                             }
+                            * */
+                            
+            
+            
+            
+                            
+                             Boolean compare_date = dateCompare(first_date, last_date);
+                             //System.out.println(compare_date);
+                             if (compare_date == true && "Reserved".equals(status) ){
+                                sea_room.remove(room);
+                             }else if (compare_date == false){
+                                //sea_room.add(room);
+                                System.out.println("Ever Reach here?");
+                             }else{
+                                System.out.println("Filter Room Error/ Succes\n");
+                             }
+                             
+                            
+
                         }
                     //}
                             //while ((s_room_data = br.readLine())!= null){
