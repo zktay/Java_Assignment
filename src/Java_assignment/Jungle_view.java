@@ -20,7 +20,7 @@ import javax.swing.border.Border;
  * @author ZK
  */
 public class Jungle_view extends javax.swing.JFrame {
-    private static final String PIC_FOLDER = "pic/Jungle/";
+    private static final String PIC_FOLDER = "pic/";
     public ImageIcon icon;
     /**
      * Creates new form Jungle_view
@@ -372,6 +372,40 @@ public class Jungle_view extends javax.swing.JFrame {
                                             panel.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(0.5f)));
                                             jPanel2.add(panel);
                                             pack_name.setText(jungle_room.get(i));
+                                            String room_filter = pack_name.getText();
+                                            switch (room_filter){
+                                                case "Room 1":
+                                                    pack_pic.setIcon(picture("1"));
+                                                    break;
+                                                case "Room 2":
+                                                    pack_pic.setIcon(picture("2"));
+                                                    break;
+                                                case "Room 3":
+                                                    pack_pic.setIcon(picture("3"));
+                                                    break;
+                                                case "Room 4":
+                                                    pack_pic.setIcon(picture("4"));
+                                                    break;
+                                                case "Room 5":
+                                                    pack_pic.setIcon(picture("5"));
+                                                    break;
+                                                case "Room 6":
+                                                    pack_pic.setIcon(picture("6"));
+                                                    break;
+                                                case "Room 7":
+                                                    pack_pic.setIcon(picture("7"));
+                                                    break;
+                                                case "Room 8":
+                                                    pack_pic.setIcon(picture("8"));
+                                                    break;
+                                                case "Room 9":
+                                                    pack_pic.setIcon(picture("9"));
+                                                    break;
+                                                case "Room 10":
+                                                    pack_pic.setIcon(picture("10"));
+                                                    break;                     
+                                            }
+                                            /**
                                             int f = i + 1 ;
                                             System.out.println("This is width:" + pack_pic.getWidth());
                                             String pic_counter = String.valueOf(f);
@@ -382,6 +416,7 @@ public class Jungle_view extends javax.swing.JFrame {
                                             Image j_pic2 = j_pic1.getScaledInstance(170, 190, Image.SCALE_SMOOTH);
                                             ImageIcon jun_pic = new ImageIcon(j_pic2);
                                             pack_pic.setIcon(jun_pic);
+                                            * */
                                             pack_price.setText("RM 350");
                                             final int i0 = i;
                                             b1.addActionListener(new ActionListener() {
@@ -449,6 +484,14 @@ public class Jungle_view extends javax.swing.JFrame {
         Date d;
         d = mm.start_date.getDate();
         return d.after(starting_date) && d.before(ending_date);
+    }
+    
+    public ImageIcon picture(String ROOM){
+        ImageIcon sea_pic1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource(PIC_FOLDER + ROOM + ".jpg")));
+        Image s_pic1 = sea_pic1.getImage();
+        Image s_pic2 = s_pic1.getScaledInstance(170, 190, Image.SCALE_SMOOTH);
+        ImageIcon sea_pic = new ImageIcon(s_pic2);
+        return sea_pic;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Booking_btn1;

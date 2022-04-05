@@ -23,7 +23,7 @@ import java.awt.image.BufferedImage;
  */
 
 public class Sea_view extends javax.swing.JFrame {
-    private static final String PIC_FOLDER = "pic/Sea/";
+    private static final String PIC_FOLDER = "pic/";
     public ImageIcon icon;
     /**
      * Creates new form Sea_view
@@ -306,7 +306,6 @@ public class Sea_view extends javax.swing.JFrame {
         File file = new File("file/Sea_Room.txt");
         File booking = new File ("file/booking.txt");
         ArrayList<String> sea_room = new ArrayList<>();
-        ArrayList<String> room_pic = new ArrayList<>();
         ArrayList<String> VALUES = new ArrayList<>();
         jPanel2.setLayout(new GridLayout (10, 1, 0, 5));
         try{
@@ -320,9 +319,7 @@ public class Sea_view extends javax.swing.JFrame {
                             String[] s_room;
                             s_room = a.split(", ");
                             sea_room.add(s_room[0]);
-                            room_pic.add(s_room[1]);
                             //System.out.println(sea_room);
-                            //System.out.println(room_pic);
                         }
                         
                     }
@@ -410,16 +407,48 @@ public class Sea_view extends javax.swing.JFrame {
                                             panel.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(0.5f)));
                                             jPanel2.add(panel);
                                             pack_name.setText(sea_room.get(i));
+                                            String room_filter = pack_name.getText();
+                                            switch (room_filter){
+                                                case "Room 11":
+                                                    pack_pic.setIcon(picture("11"));
+                                                    break;
+                                                case "Room 12":
+                                                    pack_pic.setIcon(picture("12"));
+                                                    break;
+                                                case "Room 13":
+                                                    pack_pic.setIcon(picture("13"));
+                                                    break;
+                                                case "Room 14":
+                                                    pack_pic.setIcon(picture("14"));
+                                                    break;
+                                                case "Room 15":
+                                                    pack_pic.setIcon(picture("15"));
+                                                    break;
+                                                case "Room 16":
+                                                    pack_pic.setIcon(picture("16"));
+                                                    break;
+                                                case "Room 17":
+                                                    pack_pic.setIcon(picture("17"));
+                                                    break;
+                                                case "Room 18":
+                                                    pack_pic.setIcon(picture("18"));
+                                                    break;
+                                                case "Room 19":
+                                                    pack_pic.setIcon(picture("19"));
+                                                    break;
+                                                case "Room 20":
+                                                    pack_pic.setIcon(picture("20"));
+                                                    break;                     
+                                            }
+                                            /**
                                             int f = i + 1 ;
-                                            System.out.println("This is width:" + pack_pic.getWidth());
                                             String pic_counter = String.valueOf(f);
-                                            System.out.println(pic_counter);
                                             ImageIcon sea_pic1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource(PIC_FOLDER + pic_counter + ".jpg")));
                                             Image s_pic1 = sea_pic1.getImage();
-                                            //Image s_pic2 = s_pic1.getScaledInstance(pack_pic.getWidth(), pack_pic.getHeight(), Image.SCALE_SMOOTH);
                                             Image s_pic2 = s_pic1.getScaledInstance(170, 190, Image.SCALE_SMOOTH);
                                             ImageIcon sea_pic = new ImageIcon(s_pic2);
                                             pack_pic.setIcon(sea_pic);
+                                            * */
                                             
                                             
                                             //pack_pic.setIcon(new ImageIcon(PIC_FOLDER + i + "jpg"));
@@ -495,6 +524,14 @@ public class Sea_view extends javax.swing.JFrame {
         Date d;
         d = mm.start_date.getDate();
         return d.after(starting_date) && d.before(ending_date);
+    }
+    
+    public ImageIcon picture(String ROOM){
+        ImageIcon sea_pic1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource(PIC_FOLDER + ROOM + ".jpg")));
+        Image s_pic1 = sea_pic1.getImage();
+        Image s_pic2 = s_pic1.getScaledInstance(170, 190, Image.SCALE_SMOOTH);
+        ImageIcon sea_pic = new ImageIcon(s_pic2);
+        return sea_pic;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
