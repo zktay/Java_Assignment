@@ -505,6 +505,7 @@ private JFrame Checkout_Frame;
                     String eleventh = jTable1.getModel().getValueAt(selectedRows[i], 11).toString();
                     lineToView = first +", "+ second +", "+ third +", "+ fourth +", "+ fifth +", "+ sixth +", "+ seventh +", "+ eighth +", "+ ninth +", "+ tenth +", "+ eleventh;
                     rc.Sight.setText(first);
+                    rc.Room_Price.setText("RM 350");
                     rc.Room_No.setText(second);
                     rc.name.setText(third);
                     rc.ic.setText(fourth);
