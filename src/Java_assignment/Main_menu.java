@@ -269,6 +269,8 @@ public class Main_menu extends javax.swing.JFrame {
         Jungle_view jv = new Jungle_view();
         Date get_st_date = start_date.getDate();
         Date get_en_date = end_date.getDate();
+        start_date.setDate(get_st_date);
+        end_date.setDate(get_en_date);
         DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
         String st_date = dt.format(get_st_date);
         String en_date = dt.format(get_en_date);
@@ -283,6 +285,8 @@ public class Main_menu extends javax.swing.JFrame {
         Sea_view sv = new Sea_view();
         Date get_st_date = start_date.getDate();
         Date get_en_date = end_date.getDate();
+        start_date.setDate(get_st_date);
+        end_date.setDate(get_en_date);
         DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
         String st_date = dt.format(get_st_date);
         String en_date = dt.format(get_en_date);

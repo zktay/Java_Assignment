@@ -302,7 +302,13 @@ public class Sea_view extends javax.swing.JFrame {
       
     public void Room(){
         this.toBack();
+        Main_menu mm = new Main_menu();
         DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
+        //String get_date = start_date.getText();
+        //System.out.println("THIS" + get_date);
+        //Date get_date_date = dateConverter(get_date);
+        Date get_date_date = mm.start_date.getDate();
+        System.out.println("THIS" + get_date_date);
         File file = new File("file/Sea_Room.txt");
         File booking = new File ("file/booking.txt");
         ArrayList<String> sea_room = new ArrayList<>();
@@ -345,9 +351,9 @@ public class Sea_view extends javax.swing.JFrame {
                             String s_first_date = VALUES.get(i + 1);
                             String s_last_date = VALUES.get(i + 2);
                             String status = VALUES.get(i + 3);
-                            System.out.println(s_first_date);
-                            System.out.println(s_last_date);
-                            System.out.println(status);
+                            //System.out.println(s_first_date);
+                            //System.out.println(s_last_date);
+                            //System.out.println(status);
                             Date first_date = dateConverter(s_first_date);
                             Date last_date = dateConverter(s_last_date);
                             //System.out.println(first_date);
@@ -358,9 +364,9 @@ public class Sea_view extends javax.swing.JFrame {
                                 sea_room.remove(room);
                             }else if (compare_date == false){
                                 //sea_room.add(room);
-                                System.out.print("Ever Reach here?");
+                                //System.out.print("Ever Reach here?");
                             }else{
-                                System.out.print("Filter Room Error/ Succes\n");
+                                //System.out.print("Filter Room Error/ Succes\n");
                             }
                         }
                     //}
@@ -515,6 +521,7 @@ public class Sea_view extends javax.swing.JFrame {
             return date_date;
         }catch (Exception e){
             System.out.print("Date Converter Error");
+            e.printStackTrace();
         }
         return null;
     }
@@ -525,6 +532,20 @@ public class Sea_view extends javax.swing.JFrame {
         d = mm.start_date.getDate();
         return d.after(starting_date) && d.before(ending_date);
     }
+    
+    public static boolean between(Date date, Date dateStart, Date dateEnd) {
+    if (date != null && dateStart != null && dateEnd != null) {
+        if (date.after(dateStart) && date.before(dateEnd)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    System.out.print("NULL");
+    return false;
+    }
+    
     
     public ImageIcon picture(String ROOM){
         ImageIcon sea_pic1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource(PIC_FOLDER + ROOM + ".jpg")));
