@@ -270,7 +270,20 @@ public class Book_Form extends javax.swing.JFrame {
         FileWriter fw = null;
         PrintWriter pw = null;
         Confirm_Frame = new JFrame("Booking");
-        if (JOptionPane.showConfirmDialog( Confirm_Frame,"Confirm if you Want to book " + Room_No.getText() + " ?"," Book",
+        String name = cus_name.getText();
+        String ic = cus_ic.getText();
+        String email = cus_email.getText();
+        String contact = cus_contact.getText();
+        if (name.equals("")){
+            JOptionPane.showMessageDialog(null, "Name is mandotory!");
+        }else if (ic.equals("")){
+            JOptionPane.showMessageDialog(null, "IC is mandotory!");
+        }else if (email.equals("")){
+            JOptionPane.showMessageDialog(null, "Email is mandotory!");
+        }else if (contact.equals("")){
+            JOptionPane.showMessageDialog(null, "Contact is mandotory!");
+        }else if ( name != "" && ic != "" && email != "" && contact != ""){
+            if (JOptionPane.showConfirmDialog( Confirm_Frame,"Confirm if you Want to book " + Room_No.getText() + " ?"," Book",
             JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_OPTION){
                 try{
                     String[] temp= Room_No.getText().split(" ");
@@ -299,7 +312,12 @@ public class Book_Form extends javax.swing.JFrame {
                 }catch (Exception e){
                     System.out.println("Book Form Error");
                 }
+            }
+        else{
+                System.out.print("YES");
+            }
         }
+        
         
         
     }//GEN-LAST:event_BookActionPerformed

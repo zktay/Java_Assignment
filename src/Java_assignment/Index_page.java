@@ -17,10 +17,6 @@ public class Index_page extends javax.swing.JFrame {
      */
     public Index_page() {
         initComponents();
-        //Dimension objDimension = Toolkit.getDefaultToolkit().getScreenSize();
-        //int iCoordX = (objDimension.width - this.getWidth()) / 2;
-        //int iCoordY = (objDimension.height - this.getHeight()) / 2;
-        //this.setLocation(iCoordX, iCoordY); 
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
@@ -216,7 +212,7 @@ private JFrame exit;
 
     private void login_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_btnActionPerformed
         String password = new String(Password_input.getPassword());
-        if ( username_input.getText().equals("admin") && password.equals("admin")){
+        if ( username_input.getText().equals("staff") && password.equals("staff")){
             JOptionPane.showMessageDialog(null, "Login Succesful");
             Main_menu mm = new Main_menu();
             mm.show();
