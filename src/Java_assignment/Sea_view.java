@@ -302,6 +302,8 @@ public class Sea_view extends javax.swing.JFrame {
       
     public void Room(){
         this.toBack();
+        revalidate();
+        repaint();
         Main_menu mm = new Main_menu();
         DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
         //String get_date = start_date.getText();

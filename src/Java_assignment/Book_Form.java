@@ -306,9 +306,10 @@ public class Book_Form extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog( Confirm_Frame,"Booking for " + Room_No.getText() + " Completed, Thanks!");
                     dispose();
                     Sea_view sv = new Sea_view();
-                    sv.Room();
-                    sv.jPanel2.repaint();
-                    sv.jPanel2.revalidate();
+                    //sv.Room();
+                    //sv.revalidate();
+                    //sv.repaint();
+                    sv.setVisible(true);
                 }catch (Exception e){
                     System.out.println("Book Form Error");
                 }
