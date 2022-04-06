@@ -39,18 +39,14 @@ public class Main_menu extends javax.swing.JFrame {
         Image adm_pic2 = adm_pic1.getScaledInstance(adm_pic.getWidth(), adm_pic.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon admin_pic = new ImageIcon(adm_pic2);
         adm_pic.setIcon(admin_pic);
-        try {
-            Date date = new Date();
-            start_date.setDate(date);
-            DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
-            Calendar cal = Calendar.getInstance();                  
-            cal.add(Calendar.DAY_OF_MONTH, 4);
-            Date futureDate = cal.getTime();
-            String outD = dt.format(futureDate);
-            end_date.setDate(futureDate);
-        }catch (Exception c){
-            System.out.println("Main Menu Error");
-        } 
+        Date date = new Date();
+        start_date.setDate(date);
+        DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
+        Calendar cal = Calendar.getInstance();                  
+        cal.add(Calendar.DAY_OF_MONTH, 4);
+        Date futureDate = cal.getTime();
+        end_date.setDate(futureDate);
+        System.out.println("Main Menu Error");
     }
         
     /**
