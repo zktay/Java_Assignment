@@ -416,7 +416,6 @@ private JFrame Checkout_Frame;
             String lineToAdd = null;
             int[] selectedRows = jTable1.getSelectedRows();
             for (int i = 0; i< selectedRows.length; i++){
-                    //int modelIndex = jTable1.convertRowIndexToModel(selectedRows[i]);
                     String first = jTable1.getModel().getValueAt(selectedRows[i], 1).toString();
                     String second = jTable1.getModel().getValueAt(selectedRows[i], 2).toString();
                     String third = jTable1.getModel().getValueAt(selectedRows[i], 3).toString();
@@ -442,7 +441,6 @@ private JFrame Checkout_Frame;
                         String trimmedLine = currentLine.trim();
                         if(trimmedLine.equals(lineToRemove)) continue;
                         writer.write(currentLine + System.getProperty("line.separator"));
-                        //System.out.println(lineToAdd);
                         jTable1.repaint();
                         jTable1.revalidate();
                     }
@@ -487,7 +485,6 @@ private JFrame Checkout_Frame;
             String lineToView = null;
             int[] selectedRows = jTable1.getSelectedRows();
             for (int i = 0; i< selectedRows.length; i++){
-                    //int modelIndex = jTable1.convertRowIndexToModel(selectedRows[i]);
                     String first = jTable1.getModel().getValueAt(selectedRows[i], 1).toString();
                     String second = jTable1.getModel().getValueAt(selectedRows[i], 2).toString();
                     String third = jTable1.getModel().getValueAt(selectedRows[i], 3).toString();
