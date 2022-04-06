@@ -361,7 +361,7 @@ private JFrame Delete_Frame;
                     String eleventh = jTable1.getModel().getValueAt(selectedRows[i], 11).toString();
                     lineToRemove = first +", "+ second +", "+ third +", "+ fourth +", "+ fifth +", "+ sixth +", "+ seventh +", "+ eighth +", "+ ninth +", "+ tenth +", "+ eleventh;
                     tableModel.removeRow(selectedRows[i]);
-                    System.out.println(lineToRemove);
+                    //System.out.println(lineToRemove);
             }
                 try{
                     File file = new File("file/booking.txt");
@@ -401,8 +401,8 @@ private JFrame Delete_Frame;
                 } 
             //}   
         }
-        jTable1.repaint();
-        jTable1.revalidate();
+        jScrollPane1.repaint();
+        jScrollPane1.revalidate();
     }//GEN-LAST:event_deleteMouseClicked
 private JFrame Checkout_Frame;
     private void checkoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkoutMouseClicked
@@ -429,9 +429,7 @@ private JFrame Checkout_Frame;
                     String tenth = jTable1.getModel().getValueAt(selectedRows[i], 10).toString();
                     String eleventh = jTable1.getModel().getValueAt(selectedRows[i], 11).toString();
                     lineToRemove = first +", "+ second +", "+ third +", "+ fourth +", "+ fifth +", "+ sixth +", "+ seventh +", "+ eighth +", "+ ninth +", "+ tenth +", "+ eleventh;
-                    lineToAdd = first +", "+ second +", "+ third +", "+ fourth +", "+ fifth +", "+ sixth +", "+ seventh +", "+ eighth +", "+ ninth +", "+ tenth +", "+ "Completed";
-                    
-                    
+                    lineToAdd = first +", "+ second +", "+ third +", "+ fourth +", "+ fifth +", "+ sixth +", "+ seventh +", "+ eighth +", "+ ninth +", "+ tenth +", "+ "Completed";  
             }
                 try{
                     File file = new File("file/booking.txt");
@@ -441,11 +439,10 @@ private JFrame Checkout_Frame;
 
                     String currentLine;
                     while((currentLine = reader.readLine()) != null) {
-                        // trim newline when comparing with lineToRemove
                         String trimmedLine = currentLine.trim();
                         if(trimmedLine.equals(lineToRemove)) continue;
                         writer.write(currentLine + System.getProperty("line.separator"));
-                        System.out.println(lineToAdd);
+                        //System.out.println(lineToAdd);
                         jTable1.repaint();
                         jTable1.revalidate();
                     }
@@ -467,14 +464,13 @@ private JFrame Checkout_Frame;
                     }
                     Checkout_Frame = new JFrame("Checkout Complete!");
                     JOptionPane.showMessageDialog( Checkout_Frame,"Checkout Completed!");
-                    jTable1.repaint();
-                    jTable1.revalidate();
                 }catch (Exception e){
                     System.out.print("Delete Line Error");
                     e.printStackTrace();
-                } 
-            //}   
+                }
         }
+        jScrollPane1.repaint();
+        jScrollPane1.revalidate(); 
     }//GEN-LAST:event_checkoutMouseClicked
 
     private void receiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receiptActionPerformed
@@ -515,10 +511,8 @@ private JFrame Checkout_Frame;
                     rc.end_date.setText(eighth);
                     rc.days_count1.setText(ninth);
                     rc.total_amount.setText(tenth);
-                    rc.setVisible(true);
-                    
+                    rc.setVisible(true);   
             }
-            
         }
         jTable1.repaint();
         jTable1.revalidate();

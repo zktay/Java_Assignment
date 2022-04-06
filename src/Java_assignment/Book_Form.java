@@ -304,11 +304,10 @@ public class Book_Form extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog( Confirm_Frame,"Booking for " + Room_No.getText() + " Completed, Thanks!");
                 dispose();
             }
-
                     
     }catch (Exception e){
-                    System.out.println("Book Form Error");
-                }    
+        JOptionPane.showMessageDialog(this, "Please fill in all the information and make sure all information is correct!", "Warning", JOptionPane.WARNING_MESSAGE);
+    }    
         
     }//GEN-LAST:event_BookActionPerformed
 
