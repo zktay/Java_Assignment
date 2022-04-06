@@ -40,13 +40,15 @@ public class Main_menu extends javax.swing.JFrame {
         ImageIcon admin_pic = new ImageIcon(adm_pic2);
         adm_pic.setIcon(admin_pic);
         Date date = new Date();
-        start_date.setDate(date);
         DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
         Calendar cal = Calendar.getInstance();                  
-        cal.add(Calendar.DAY_OF_MONTH, 4);
+        cal.add(Calendar.DAY_OF_MONTH, 1);
         Date futureDate = cal.getTime();
+        start_date.setMinSelectableDate(date);
+        end_date.setMinSelectableDate(futureDate);
+        start_date.setDate(date);
         end_date.setDate(futureDate);
-        System.out.println("Main Menu Error");
+        //System.out.println("Main Menu Error");
     }
         
     /**
@@ -270,6 +272,7 @@ public class Main_menu extends javax.swing.JFrame {
         DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
         String st_date = dt.format(get_st_date);
         String en_date = dt.format(get_en_date);
+        jv.Room(get_st_date, get_en_date);
         jv.start_date.setText(st_date);
         jv.end_date.setText(en_date);
         jv.setVisible(true);
@@ -286,6 +289,7 @@ public class Main_menu extends javax.swing.JFrame {
         DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
         String st_date = dt.format(get_st_date);
         String en_date = dt.format(get_en_date);
+        sv.Room(get_st_date, get_en_date);
         sv.start_date.setText(st_date);
         sv.end_date.setText(en_date);
         sv.setVisible(true);

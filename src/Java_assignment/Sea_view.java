@@ -46,7 +46,6 @@ public class Sea_view extends javax.swing.JFrame {
         Image adm_pic2 = adm_pic1.getScaledInstance(adm_pic.getWidth(), adm_pic.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon admin_pic = new ImageIcon(adm_pic2);
         adm_pic.setIcon(admin_pic);
-        Room();
         
     }
     
@@ -300,7 +299,7 @@ public class Sea_view extends javax.swing.JFrame {
         });
     }
       
-    public void Room(){
+    public void Room(Date startDate, Date endDate){
         this.toBack();
         revalidate();
         repaint();
@@ -360,7 +359,7 @@ public class Sea_view extends javax.swing.JFrame {
                             Date last_date = dateConverter(s_last_date);
                             //System.out.println(first_date);
                             //System.out.println(last_date);
-                            Boolean compare_date = dateCompare(first_date, last_date);
+                            Boolean compare_date = dateCompare(startDate, first_date, last_date);
                             //System.out.println(compare_date);
                             if (compare_date == true && "Reserved".equals(status) ){
                                 sea_room.remove(room);
@@ -528,10 +527,10 @@ public class Sea_view extends javax.swing.JFrame {
         return null;
     }
     
-    public boolean dateCompare(Date starting_date, Date ending_date){
-        Main_menu mm = new Main_menu();
+    public boolean dateCompare(Date startDate, Date starting_date, Date ending_date){
+        //Main_menu mm = new Main_menu();
         Date d;
-        d = mm.start_date.getDate();
+        d = startDate;
         return d.after(starting_date) && d.before(ending_date);
     }
     

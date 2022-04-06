@@ -1,10 +1,2 @@
-Sea, Room 11, dfsafdsadfas, dafadfs, sfadsadfdfsa, fdsasdfasdaf, 04-04-2022, 08-04-2022, 4, RM 1550, Completed
-Sea, Room 12, fdafdsafasd, fdafdsafasd, fdafdsafasd, fdafdsafasd, 04-04-2022, 08-04-2022, 4, RM 1550, Completed
-Sea, Room 14, fdasfdsafds, fdasfdsafds, fdasfdsafds, fdasfdsafds, 15-04-2022, 16-04-2022, 1, RM 395, Reserved
-Sea, Room 20, fdasfdsa, sfdafsda, sfadsfda, fdsafsda, 15-04-2022, 16-04-2022, 1, RM 395, Reserved
-Sea, Room 11, fdasfdasfdsa, fsdafdas, fsadfsad, fasfsadfsda, 05-04-2022, 09-04-2022, 4, RM 1550, Completed
-Sea, Room 11, fdas, fdasfdsa, fdsafad, fasdfasd, 06-04-2022, 10-04-2022, 4, RM 1550, Reserved
-Sea, Room 12, fdafdas, fdasfd, asfasd, fadsfasd, 23-04-2022, 25-04-2022, 2, RM 780, Reserved
-Sea, Room 12, fdsafdsafsda, fdsafdsafsda, fdsafdsafsda, fdsafdsafsda, 06-04-2022, 10-04-2022, 4, RM 1550, Reserved
-Sea, Room 13, fdasfdsafsd, fdasfdsafsd, fdasfdsafsd, fdasfdsafsd, 06-04-2022, 10-04-2022, 4, RM 1550, Reserved
-Sea, Room 14, fdasfsadfsad, fdafdas, fdafadsdfas, fdasfdsa, 06-04-2022, 10-04-2022, 4, RM 1550, Reserved
+Sea, Room 11, fdasfdsa, fadsfdas, fadsfads, fadsfsda, 07-04-2022, 08-04-2022, 1, RM 395, Reserved
+Sea, Room 11, dfsafdsa, fdasfdas, fdasfads, fdasfdas, 09-04-2022, 10-04-2022, 1, RM 395, Reserved
