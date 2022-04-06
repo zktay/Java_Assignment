@@ -301,15 +301,12 @@ public class Sea_view extends javax.swing.JFrame {
       
     public void Room(Date startDate, Date endDate){
         this.toBack();
-        revalidate();
-        repaint();
-        Main_menu mm = new Main_menu();
+        this.revalidate();
+        this.repaint();
         DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
         //String get_date = start_date.getText();
         //System.out.println("THIS" + get_date);
         //Date get_date_date = dateConverter(get_date);
-        Date get_date_date = mm.start_date.getDate();
-        System.out.println("THIS" + get_date_date);
         File file = new File("file/Sea_Room.txt");
         File booking = new File ("file/booking.txt");
         ArrayList<String> sea_room = new ArrayList<>();
