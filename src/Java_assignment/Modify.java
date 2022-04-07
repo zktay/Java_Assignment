@@ -607,7 +607,7 @@ private JFrame Checkout_Frame;
     }//GEN-LAST:event_SearchActionPerformed
 
     private void modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_modifyActionPerformed
 
     private void modifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modifyMouseClicked
@@ -617,7 +617,6 @@ private JFrame Checkout_Frame;
             Object rowValue = jTable1.getValueAt(row, column);
             DefaultTableModel tableModel = (DefaultTableModel)this.jTable1.getModel();
             String lineToRemove = null;
-            String lineToAdd = null;
             int[] selectedRows = jTable1.getSelectedRows();
             for (int i = 0; i< selectedRows.length; i++){
                     String first = jTable1.getModel().getValueAt(selectedRows[i], 1).toString();
@@ -632,37 +631,26 @@ private JFrame Checkout_Frame;
                     String tenth = jTable1.getModel().getValueAt(selectedRows[i], 10).toString();
                     String eleventh = jTable1.getModel().getValueAt(selectedRows[i], 11).toString();
                     lineToRemove = first +", "+ second +", "+ third +", "+ fourth +", "+ fifth +", "+ sixth +", "+ seventh +", "+ eighth +", "+ ninth +", "+ tenth +", "+ eleventh;
-                    
-                    
+                    Modify_form mf = new Modify_form();
+                    mf.passVar(lineToRemove);
+                    mf.Room_No.setText(second);
+                    mf.Room_Price.setText("RM 350");
+                    mf.Sight.setText(first);
+                    mf.name_input.setText(third);
+                    mf.ic_input.setText(fourth);
+                    mf.email_input.setText(fifth);
+                    mf.contact_input.setText(sixth);
+                    mf.start_date.setText(seventh);
+                    mf.end_date.setText(eighth);
+                    mf.days_count.setText(ninth);
+                    mf.total_amount.setText(tenth);
+                    mf.setVisible(true);
             }
-                try{
-                    File file = new File("file/booking.txt");
-                    File tempfile = new File("file/tempbooking.txt");
-                    BufferedReader reader = new BufferedReader(new FileReader(file));
-                    BufferedWriter writer = new BufferedWriter(new FileWriter(tempfile));
-
-                    String currentLine;
-                    while((currentLine = reader.readLine()) != null) {
-                        String trimmedLine = currentLine.trim();
-                        if(trimmedLine.equals(lineToRemove)) continue;
-                        writer.write(currentLine + System.getProperty("line.separator"));
-                        jTable1.repaint();
-                        jTable1.revalidate();
-                    }
-                    writer.write(lineToAdd);
-                    writer.close(); 
-                    reader.close();
-                    boolean succeed = file.delete();
-                    boolean successful = tempfile.renameTo(file);
-                    Checkout_Frame = new JFrame("Checkout Complete!");
-                    JOptionPane.showMessageDialog( Checkout_Frame,"Checkout Completed!");
-                }catch (Exception e){
-                    System.out.print("Delete Line Error");
-                    e.printStackTrace();
-                }
         }
     }//GEN-LAST:event_modifyMouseClicked
-
+    public String passVar(String lineToRemove){
+        return lineToRemove;
+    }
     /**
      * @param args the command line arguments
      */
@@ -743,7 +731,7 @@ private JFrame Checkout_Frame;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JButton modify;
+    public javax.swing.JButton modify;
     private javax.swing.JButton receipt;
     private javax.swing.JTextField search_field;
     // End of variables declaration//GEN-END:variables

@@ -1,6 +1,4 @@
 Sea, Room 11, fdasdfa, 22222, fadsfads@, 2321321, 07-04-2022, 08-04-2022, 1, RM 395, Reserved
 Sea, Room 11, fdasfsda, 321312, 321321@, 312312, 08-04-2022, 09-04-2022, 1, RM 395, Reserved
 Jungle, Room 1, fdasfdsa, 412312, 321321@, 321321, 08-04-2022, 09-04-2022, 1, RM 395, Reserved
-Jungle, Room 2, fdasfdas, 321312, 321321@, 32132, 08-04-2022, 09-04-2022, 1, RM 395, Reserved
-Jungle, Room 2, fdasfsda, 321321, 321@, 321321, 17-04-2022, 20-04-2022, 3, RM 1185, Reserved
-Sea, Room 12, fdsafsda, 32121, 321@, 321, 08-04-2022, 09-04-2022, 1, RM 395, Completed
+Sea, Room 12, Tay, 32121, 321@, 321, 08-04-2022, 09-04-2022, 1, RM 395, Reserved

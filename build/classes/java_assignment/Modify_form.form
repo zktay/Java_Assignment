@@ -53,7 +53,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="days_count1" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="days_count" min="-2" pref="35" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -104,10 +104,10 @@
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
               <Component id="Back1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="Book1" min="-2" max="-2" attributes="0"/>
+              <Component id="save" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -159,14 +159,14 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel23" alignment="1" min="-2" pref="38" max="-2" attributes="0"/>
-                  <Component id="days_count1" alignment="1" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="days_count" alignment="1" min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="jLabel24" alignment="1" min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="total_amount" alignment="1" min="-2" pref="38" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Back1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="Book1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="save" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
           </Group>
@@ -237,7 +237,7 @@
         <Property name="text" type="java.lang.String" value="Days Count:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="days_count1">
+    <Component class="javax.swing.JLabel" name="days_count">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
@@ -270,12 +270,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Back1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="Book1">
+    <Component class="javax.swing.JButton" name="save">
       <Properties>
         <Property name="text" type="java.lang.String" value="Save"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Book1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
