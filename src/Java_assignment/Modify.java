@@ -12,7 +12,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import static java.lang.Integer.parseInt;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -61,6 +65,8 @@ public class Modify extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Main_title = new javax.swing.JLabel();
         Logo_pic = new javax.swing.JLabel();
+        search_field = new javax.swing.JTextField();
+        Search = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         Modify_btn = new javax.swing.JButton();
         ViewR_btn = new javax.swing.JButton();
@@ -74,6 +80,7 @@ public class Modify extends javax.swing.JFrame {
         checkout = new javax.swing.JButton();
         delete = new javax.swing.JButton();
         receipt = new javax.swing.JButton();
+        modify = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ZK Resort Room Booking System");
@@ -87,6 +94,20 @@ public class Modify extends javax.swing.JFrame {
         Logo_pic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Logo_pic.setText("Logo");
 
+        search_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                search_fieldActionPerformed(evt);
+            }
+        });
+
+        Search.setText("Search");
+        Search.setFocusable(false);
+        Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -96,7 +117,11 @@ public class Modify extends javax.swing.JFrame {
                 .addComponent(Logo_pic, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
                 .addComponent(Main_title, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(290, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(search_field, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Search)
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +131,10 @@ public class Modify extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(Main_title)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Main_title)
+                    .addComponent(search_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Search))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -182,6 +210,7 @@ public class Modify extends javax.swing.JFrame {
         );
 
         back.setText("Back");
+        back.setFocusable(false);
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backActionPerformed(evt);
@@ -241,6 +270,7 @@ public class Modify extends javax.swing.JFrame {
         }
 
         checkout.setText("checkout");
+        checkout.setFocusable(false);
         checkout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 checkoutMouseClicked(evt);
@@ -253,6 +283,7 @@ public class Modify extends javax.swing.JFrame {
         });
 
         delete.setText("Delete");
+        delete.setFocusable(false);
         delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 deleteMouseClicked(evt);
@@ -265,6 +296,7 @@ public class Modify extends javax.swing.JFrame {
         });
 
         receipt.setText("View Receipt");
+        receipt.setFocusable(false);
         receipt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 receiptMouseClicked(evt);
@@ -275,6 +307,8 @@ public class Modify extends javax.swing.JFrame {
                 receiptActionPerformed(evt);
             }
         });
+
+        modify.setText("Modify");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -289,6 +323,8 @@ public class Modify extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(modify, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(receipt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(delete)
@@ -309,7 +345,8 @@ public class Modify extends javax.swing.JFrame {
                             .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                             .addComponent(checkout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(delete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(receipt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(receipt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(modify, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -528,6 +565,37 @@ private JFrame Checkout_Frame;
         dispose();
     }//GEN-LAST:event_Booking_btnActionPerformed
 
+    private void search_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_fieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_search_fieldActionPerformed
+
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
+        DefaultTableModel tableModel = (DefaultTableModel)this.jTable1.getModel();
+        while (tableModel.getRowCount() > 0) {
+            tableModel.removeRow(0);
+        }
+        File file = new File("file/booking.txt");
+        try{
+            BufferedReader br;
+            br = new BufferedReader(new FileReader(file));
+            String readLine;
+            while((readLine = br.readLine()) != null) {
+                String[] s_array = readLine.split("\n");
+                for (String s : s_array) {
+                    for (int i = 0; i < s_array.length; i++) {
+                        String[] s_room = s.split(", ");
+                        if (s_room[1].equals(search_field.getText())) {
+                            int f = tableModel.getRowCount() + 1;
+                            tableModel.addRow (new Object[]{f, s_room[0], s_room[1], s_room[2], s_room[3], s_room[4], s_room[5], s_room[6], s_room[7], s_room[8], s_room[9], s_room[10]});
+                        }
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Modify.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_SearchActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -598,6 +666,7 @@ private JFrame Checkout_Frame;
     private javax.swing.JButton Logout_btn;
     private javax.swing.JLabel Main_title;
     private javax.swing.JButton Modify_btn;
+    private javax.swing.JButton Search;
     private javax.swing.JButton ViewR_btn;
     private javax.swing.JLabel adm_pic;
     private javax.swing.JButton back;
@@ -607,6 +676,8 @@ private JFrame Checkout_Frame;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton modify;
     private javax.swing.JButton receipt;
+    private javax.swing.JTextField search_field;
     // End of variables declaration//GEN-END:variables
 }

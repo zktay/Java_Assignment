@@ -131,6 +131,11 @@ public class Jungle_view extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         Modifyd_btn1.setText("Manage");
+        Modifyd_btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Modifyd_btn1ActionPerformed(evt);
+            }
+        });
 
         ViewR_btn2.setText("View Receipt");
         ViewR_btn2.addActionListener(new java.awt.event.ActionListener() {
@@ -271,6 +276,12 @@ public class Jungle_view extends javax.swing.JFrame {
         ip.show();
         dispose();
     }//GEN-LAST:event_Logout_btn1ActionPerformed
+
+    private void Modifyd_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Modifyd_btn1ActionPerformed
+        Modify md = new Modify();
+        md.show();
+        dispose();
+    }//GEN-LAST:event_Modifyd_btn1ActionPerformed
 
     /**
      * @param args the command line arguments

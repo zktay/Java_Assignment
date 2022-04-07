@@ -241,10 +241,13 @@ public class Receipt extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Back1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Back1ActionPerformed
+        /**
         this.toBack();
         setVisible(false);
         new Modify().toFront();
         new Modify().setState(javax.swing.JFrame.NORMAL);
+        * */
+        dispose();
     }//GEN-LAST:event_Back1ActionPerformed
 
     private void Book1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Book1ActionPerformed
