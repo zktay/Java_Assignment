@@ -343,21 +343,21 @@ public class Jungle_view extends javax.swing.JFrame {
                             String s_first_date = VALUES.get(i + 1);
                             String s_last_date = VALUES.get(i + 2);
                             String status = VALUES.get(i + 3);
-                            System.out.println(s_first_date);
-                            System.out.println(s_last_date);
+                            //System.out.println(s_first_date);
+                            //System.out.println(s_last_date);
                             Date first_date = dateConverter(s_first_date);
                             Date last_date = dateConverter(s_last_date);
-                            System.out.println(first_date);
-                            System.out.println(last_date);
+                            //System.out.println(first_date);
+                            //System.out.println(last_date);
                             Boolean compare_date = dateCompare(startDate, first_date, last_date);
                             //System.out.println(compare_date);
                             if (compare_date == true && "Reserved".equals(status) ){
                                 jungle_room.remove(room);
                             }else if (compare_date == false){
                                 //sea_room.add(room);
-                                System.out.print("Ever Reach here?");
+                                //System.out.print("Ever Reach here?");
                             }else{
-                                System.out.print("Filter Room Error/ Succes\n");
+                                //System.out.print("Filter Room Error/ Succes\n");
                             }
                         }
                                     for (int i = 0; i < jungle_room.size(); i++) {
@@ -457,9 +457,10 @@ public class Jungle_view extends javax.swing.JFrame {
                                                     bf.setVisible(true);
                                                     String counter = dateCounter(Sstart_date, Send_date);
                                                     bf.days_count.setText(counter);
-                                                    int temp, Total;
+                                                    int temp, Total, tax;
+                                                    tax = parseInt(counter) * 10;
                                                     temp = (parseInt(counter) * 350);
-                                                    Total =  (temp * 110/100) + 10;
+                                                    Total =  (temp * 110/100) + tax;
                                                     bf.total_amount.setText("RM " + String.valueOf(Total));
                                                     bf.Sight.setText("Jungle");
                                                 }

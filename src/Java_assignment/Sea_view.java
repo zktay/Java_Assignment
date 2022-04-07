@@ -497,9 +497,10 @@ public class Sea_view extends javax.swing.JFrame {
                                                     bf.setVisible(true);
                                                     String counter = dateCounter(Sstart_date, Send_date);
                                                     bf.days_count.setText(counter);
-                                                    int temp, Total;
+                                                    int temp, Total, tax;
+                                                    tax = parseInt(counter) * 10;
                                                     temp = (parseInt(counter) * 350);
-                                                    Total =  (temp * 110/100) + 10;
+                                                    Total =  (temp * 110/100) + tax;
                                                     bf.total_amount.setText("RM " + String.valueOf(Total));
                                                     bf.Sight.setText("Sea");
                                                 }
