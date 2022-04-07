@@ -309,6 +309,16 @@ public class Modify extends javax.swing.JFrame {
         });
 
         modify.setText("Modify");
+        modify.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                modifyMouseClicked(evt);
+            }
+        });
+        modify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifyActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -595,6 +605,63 @@ private JFrame Checkout_Frame;
             Logger.getLogger(Modify.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_SearchActionPerformed
+
+    private void modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modifyActionPerformed
+
+    private void modifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modifyMouseClicked
+        int column = jTable1.getColumnModel().getColumnIndexAtX(evt.getX());
+        int row = evt.getY()/jTable1.getRowHeight();
+        if(row < jTable1.getRowCount() && row >= 0 && column < jTable1.getColumnCount() && column >= 0){
+            Object rowValue = jTable1.getValueAt(row, column);
+            DefaultTableModel tableModel = (DefaultTableModel)this.jTable1.getModel();
+            String lineToRemove = null;
+            String lineToAdd = null;
+            int[] selectedRows = jTable1.getSelectedRows();
+            for (int i = 0; i< selectedRows.length; i++){
+                    String first = jTable1.getModel().getValueAt(selectedRows[i], 1).toString();
+                    String second = jTable1.getModel().getValueAt(selectedRows[i], 2).toString();
+                    String third = jTable1.getModel().getValueAt(selectedRows[i], 3).toString();
+                    String fourth = jTable1.getModel().getValueAt(selectedRows[i], 4).toString();
+                    String fifth = jTable1.getModel().getValueAt(selectedRows[i], 5).toString();
+                    String sixth = jTable1.getModel().getValueAt(selectedRows[i], 6).toString();
+                    String seventh = jTable1.getModel().getValueAt(selectedRows[i], 7).toString();
+                    String eighth = jTable1.getModel().getValueAt(selectedRows[i], 8).toString();
+                    String ninth = jTable1.getModel().getValueAt(selectedRows[i], 9).toString();
+                    String tenth = jTable1.getModel().getValueAt(selectedRows[i], 10).toString();
+                    String eleventh = jTable1.getModel().getValueAt(selectedRows[i], 11).toString();
+                    lineToRemove = first +", "+ second +", "+ third +", "+ fourth +", "+ fifth +", "+ sixth +", "+ seventh +", "+ eighth +", "+ ninth +", "+ tenth +", "+ eleventh;
+                    
+                    
+            }
+                try{
+                    File file = new File("file/booking.txt");
+                    File tempfile = new File("file/tempbooking.txt");
+                    BufferedReader reader = new BufferedReader(new FileReader(file));
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(tempfile));
+
+                    String currentLine;
+                    while((currentLine = reader.readLine()) != null) {
+                        String trimmedLine = currentLine.trim();
+                        if(trimmedLine.equals(lineToRemove)) continue;
+                        writer.write(currentLine + System.getProperty("line.separator"));
+                        jTable1.repaint();
+                        jTable1.revalidate();
+                    }
+                    writer.write(lineToAdd);
+                    writer.close(); 
+                    reader.close();
+                    boolean succeed = file.delete();
+                    boolean successful = tempfile.renameTo(file);
+                    Checkout_Frame = new JFrame("Checkout Complete!");
+                    JOptionPane.showMessageDialog( Checkout_Frame,"Checkout Completed!");
+                }catch (Exception e){
+                    System.out.print("Delete Line Error");
+                    e.printStackTrace();
+                }
+        }
+    }//GEN-LAST:event_modifyMouseClicked
 
     /**
      * @param args the command line arguments

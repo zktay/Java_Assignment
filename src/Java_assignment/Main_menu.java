@@ -300,8 +300,6 @@ public class Main_menu extends javax.swing.JFrame {
         sv.setVisible(true);
         sv.toFront();
         dispose();
-        
-        
     }//GEN-LAST:event_s_view_btnActionPerformed
 
     private void Logout_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Logout_btnActionPerformed
