@@ -584,6 +584,7 @@ private JFrame Checkout_Frame;
         while (tableModel.getRowCount() > 0) {
             tableModel.removeRow(0);
         }
+        
         File file = new File("file/booking.txt");
         try{
             BufferedReader br;
@@ -594,7 +595,47 @@ private JFrame Checkout_Frame;
                 for (String s : s_array) {
                     for (int i = 0; i < s_array.length; i++) {
                         String[] s_room = s.split(", ");
+                        if (s_room[0].equals(search_field.getText())) {
+                            int f = tableModel.getRowCount() + 1;
+                            tableModel.addRow (new Object[]{f, s_room[0], s_room[1], s_room[2], s_room[3], s_room[4], s_room[5], s_room[6], s_room[7], s_room[8], s_room[9], s_room[10]});
+                        }
                         if (s_room[1].equals(search_field.getText())) {
+                            int f = tableModel.getRowCount() + 1;
+                            tableModel.addRow (new Object[]{f, s_room[0], s_room[1], s_room[2], s_room[3], s_room[4], s_room[5], s_room[6], s_room[7], s_room[8], s_room[9], s_room[10]});
+                        }
+                        if (s_room[2].equals(search_field.getText())) {
+                            int f = tableModel.getRowCount() + 1;
+                            tableModel.addRow (new Object[]{f, s_room[0], s_room[1], s_room[2], s_room[3], s_room[4], s_room[5], s_room[6], s_room[7], s_room[8], s_room[9], s_room[10]});
+                        }
+                        if (s_room[3].equals(search_field.getText())) {
+                            int f = tableModel.getRowCount() + 1;
+                            tableModel.addRow (new Object[]{f, s_room[0], s_room[1], s_room[2], s_room[3], s_room[4], s_room[5], s_room[6], s_room[7], s_room[8], s_room[9], s_room[10]});
+                        }
+                        if (s_room[4].equals(search_field.getText())) {
+                            int f = tableModel.getRowCount() + 1;
+                            tableModel.addRow (new Object[]{f, s_room[0], s_room[1], s_room[2], s_room[3], s_room[4], s_room[5], s_room[6], s_room[7], s_room[8], s_room[9], s_room[10]});
+                        }
+                        if (s_room[5].equals(search_field.getText())) {
+                            int f = tableModel.getRowCount() + 1;
+                            tableModel.addRow (new Object[]{f, s_room[0], s_room[1], s_room[2], s_room[3], s_room[4], s_room[5], s_room[6], s_room[7], s_room[8], s_room[9], s_room[10]});
+                        }
+                        if (s_room[6].equals(search_field.getText())) {
+                            int f = tableModel.getRowCount() + 1;
+                            tableModel.addRow (new Object[]{f, s_room[0], s_room[1], s_room[2], s_room[3], s_room[4], s_room[5], s_room[6], s_room[7], s_room[8], s_room[9], s_room[10]});
+                        }
+                        if (s_room[7].equals(search_field.getText())) {
+                            int f = tableModel.getRowCount() + 1;
+                            tableModel.addRow (new Object[]{f, s_room[0], s_room[1], s_room[2], s_room[3], s_room[4], s_room[5], s_room[6], s_room[7], s_room[8], s_room[9], s_room[10]});
+                        }
+                        if (s_room[8].equals(search_field.getText())) {
+                            int f = tableModel.getRowCount() + 1;
+                            tableModel.addRow (new Object[]{f, s_room[0], s_room[1], s_room[2], s_room[3], s_room[4], s_room[5], s_room[6], s_room[7], s_room[8], s_room[9], s_room[10]});
+                        }
+                        if (s_room[9].equals(search_field.getText())) {
+                            int f = tableModel.getRowCount() + 1;
+                            tableModel.addRow (new Object[]{f, s_room[0], s_room[1], s_room[2], s_room[3], s_room[4], s_room[5], s_room[6], s_room[7], s_room[8], s_room[9], s_room[10]});
+                        }
+                        if (s_room[10].equals(search_field.getText())) {
                             int f = tableModel.getRowCount() + 1;
                             tableModel.addRow (new Object[]{f, s_room[0], s_room[1], s_room[2], s_room[3], s_room[4], s_room[5], s_room[6], s_room[7], s_room[8], s_room[9], s_room[10]});
                         }
@@ -609,7 +650,7 @@ private JFrame Checkout_Frame;
     private void modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyActionPerformed
 
     }//GEN-LAST:event_modifyActionPerformed
-
+    
     private void modifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modifyMouseClicked
         int column = jTable1.getColumnModel().getColumnIndexAtX(evt.getX());
         int row = evt.getY()/jTable1.getRowHeight();
@@ -685,7 +726,6 @@ private JFrame Checkout_Frame;
             }
         });
     }
-    
     public void Table(){
         JButton checkout_btn = new JButton();
         checkout_btn.addActionListener(new ActionListener() {
