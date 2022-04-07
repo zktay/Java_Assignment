@@ -92,6 +92,12 @@ public class Book_Form extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Name:");
 
+        cus_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cus_nameActionPerformed(evt);
+            }
+        });
+
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("I/C or Passport");
@@ -317,6 +323,10 @@ public class Book_Form extends javax.swing.JFrame {
         this.cus_email.setText("");
         this.cus_contact.setText("");
     }//GEN-LAST:event_clearActionPerformed
+
+    private void cus_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cus_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cus_nameActionPerformed
 
     /**
      * @param args the command line arguments

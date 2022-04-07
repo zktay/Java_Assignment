@@ -274,6 +274,12 @@ private JFrame Modify_done;
         lineToAdd = sight +", "+ room_no +", "+ name +", "+ ic +", "+ email +", "+ contact +", "+ start +", "+ end +", "+ day +", "+ total +", "+ eleventh;
         
         try{
+            if(name.isEmpty() || ic.isEmpty() || contact.isEmpty() || email.isEmpty()){
+            throw new Exception();
+        }
+        else if(!email.contains("@") || !ic.matches("[0-9]+") || !contact.matches("[0-9]+")){
+            throw new Exception();
+        }
             File file = new File("file/booking.txt");
             File tempfile = new File("file/tempbooking.txt");
             BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -296,8 +302,7 @@ private JFrame Modify_done;
             JOptionPane.showMessageDialog( Modify_done,"Modify Completed!");
             dispose();
         }catch (Exception e){
-            System.out.print("Modify Error");
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Please fill in all the information and make sure all information is correct!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_saveActionPerformed
     
