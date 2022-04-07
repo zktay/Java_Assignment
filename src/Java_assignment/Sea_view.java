@@ -356,7 +356,7 @@ public class Sea_view extends javax.swing.JFrame {
                             Date last_date = dateConverter(s_last_date);
                             //System.out.println(first_date);
                             //System.out.println(last_date);
-                            Boolean compare_date = dateCompare(startDate, first_date, last_date);
+                            Boolean compare_date = dateCompare(startDate, endDate, first_date, last_date);
                             //System.out.println(compare_date);
                             if (compare_date == true && "Reserved".equals(status) ){
                                 sea_room.remove(room);
@@ -524,24 +524,15 @@ public class Sea_view extends javax.swing.JFrame {
         return null;
     }
     
-    public boolean dateCompare(Date startDate, Date starting_date, Date ending_date){
+    public boolean dateCompare(Date startDate, Date endDate, Date starting_date, Date ending_date){
         //Main_menu mm = new Main_menu();
-        Date d;
+        Date d, e;
         d = startDate;
-        return d.after(starting_date) && d.before(ending_date);
-    }
-    
-    public static boolean between(Date date, Date dateStart, Date dateEnd) {
-    if (date != null && dateStart != null && dateEnd != null) {
-        if (date.after(dateStart) && date.before(dateEnd)) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    System.out.print("NULL");
-    return false;
+        e = endDate;
+        return d.after(starting_date) && d.before(ending_date) || 
+               e.after(starting_date) && e.before(ending_date) || 
+               starting_date.after(d) && ending_date.before(d) || 
+               starting_date.after(e) && ending_date.before(e);
     }
     
     
