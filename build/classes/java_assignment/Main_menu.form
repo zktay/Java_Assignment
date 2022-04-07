@@ -143,7 +143,6 @@
                       <Component id="ViewR_btn" alignment="1" pref="164" max="32767" attributes="0"/>
                       <Component id="Logout_btn" alignment="0" pref="164" max="32767" attributes="0"/>
                       <Component id="Booking_btn" alignment="1" pref="164" max="32767" attributes="0"/>
-                      <Component id="ViewR_btn1" alignment="0" pref="164" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -162,9 +161,7 @@
                   <Component id="Modifyd_btn" min="-2" pref="41" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="ViewR_btn" min="-2" pref="41" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="ViewR_btn1" min="-2" pref="41" max="-2" attributes="0"/>
-                  <EmptySpace pref="185" max="32767" attributes="0"/>
+                  <EmptySpace pref="232" max="32767" attributes="0"/>
                   <Component id="Logout_btn" min="-2" pref="41" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -184,11 +181,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="View Receipt"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ViewR_btnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Booking_btn">
           <Properties>
             <Property name="text" type="java.lang.String" value="Booking"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Booking_btnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Logout_btn">
           <Properties>
@@ -197,11 +200,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Logout_btnActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="ViewR_btn1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Manage Account"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="adm_pic">
           <Properties>
@@ -219,7 +217,7 @@
               <Color blue="ff" green="ff" red="0" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Admin"/>
+            <Property name="text" type="java.lang.String" value="Staff"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>

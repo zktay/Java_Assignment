@@ -65,7 +65,6 @@ public class Sea_view extends javax.swing.JFrame {
         ViewR_btn2 = new javax.swing.JButton();
         Booking_btn1 = new javax.swing.JButton();
         Logout_btn1 = new javax.swing.JButton();
-        ViewR_btn3 = new javax.swing.JButton();
         adm_pic = new javax.swing.JLabel();
         Cus_name1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -94,19 +93,32 @@ public class Sea_view extends javax.swing.JFrame {
         });
 
         ViewR_btn2.setText("View Receipt");
+        ViewR_btn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewR_btn2ActionPerformed(evt);
+            }
+        });
 
         Booking_btn1.setText("Booking");
+        Booking_btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Booking_btn1ActionPerformed(evt);
+            }
+        });
 
         Logout_btn1.setText("Logout");
-
-        ViewR_btn3.setText("Manage Account");
+        Logout_btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Logout_btn1ActionPerformed(evt);
+            }
+        });
 
         adm_pic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         adm_pic.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         Cus_name1.setBackground(new java.awt.Color(0, 255, 255));
         Cus_name1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Cus_name1.setText("Admin");
+        Cus_name1.setText("Staff");
         Cus_name1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -121,8 +133,7 @@ public class Sea_view extends javax.swing.JFrame {
                     .addComponent(Modifyd_btn1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ViewR_btn2, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                     .addComponent(Logout_btn1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addComponent(Booking_btn1, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addComponent(ViewR_btn3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
+                    .addComponent(Booking_btn1, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -138,8 +149,6 @@ public class Sea_view extends javax.swing.JFrame {
                 .addComponent(Modifyd_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ViewR_btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ViewR_btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Logout_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -252,10 +261,9 @@ public class Sea_view extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        this.toBack();
-        setVisible(false);
-        new Main_menu().toFront();
-        new Main_menu().setState(javax.swing.JFrame.NORMAL);
+        Main_menu mm = new Main_menu();
+        mm.show();
+        dispose();
     }//GEN-LAST:event_backActionPerformed
 
     private void Modifyd_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Modifyd_btn1ActionPerformed
@@ -263,6 +271,24 @@ public class Sea_view extends javax.swing.JFrame {
         md.show();
         dispose();
     }//GEN-LAST:event_Modifyd_btn1ActionPerformed
+
+    private void ViewR_btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewR_btn2ActionPerformed
+        Modify md = new Modify();
+        md.show();
+        dispose();
+    }//GEN-LAST:event_ViewR_btn2ActionPerformed
+
+    private void Booking_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Booking_btn1ActionPerformed
+        Main_menu mm = new Main_menu();
+        mm.show();
+        dispose();
+    }//GEN-LAST:event_Booking_btn1ActionPerformed
+
+    private void Logout_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Logout_btn1ActionPerformed
+        Index_page ip = new Index_page();
+        ip.show();
+        dispose();
+    }//GEN-LAST:event_Logout_btn1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -552,7 +578,6 @@ public class Sea_view extends javax.swing.JFrame {
     private javax.swing.JLabel Main_title;
     private javax.swing.JButton Modifyd_btn1;
     private javax.swing.JButton ViewR_btn2;
-    private javax.swing.JButton ViewR_btn3;
     private javax.swing.JLabel adm_pic;
     private javax.swing.JButton back;
     public javax.swing.JLabel end_date;

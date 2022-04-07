@@ -66,7 +66,6 @@ public class Modify extends javax.swing.JFrame {
         ViewR_btn = new javax.swing.JButton();
         Booking_btn = new javax.swing.JButton();
         Logout_btn = new javax.swing.JButton();
-        ViewR_btn1 = new javax.swing.JButton();
         adm_pic = new javax.swing.JLabel();
         Cus_name = new javax.swing.JLabel();
         back = new javax.swing.JButton();
@@ -121,8 +120,18 @@ public class Modify extends javax.swing.JFrame {
         });
 
         ViewR_btn.setText("View Receipt");
+        ViewR_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewR_btnActionPerformed(evt);
+            }
+        });
 
         Booking_btn.setText("Booking");
+        Booking_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Booking_btnActionPerformed(evt);
+            }
+        });
 
         Logout_btn.setText("Logout");
         Logout_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -131,14 +140,12 @@ public class Modify extends javax.swing.JFrame {
             }
         });
 
-        ViewR_btn1.setText("Manage Account");
-
         adm_pic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         adm_pic.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         Cus_name.setBackground(new java.awt.Color(0, 255, 255));
         Cus_name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Cus_name.setText("Admin");
+        Cus_name.setText("Staff");
         Cus_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -153,8 +160,7 @@ public class Modify extends javax.swing.JFrame {
                     .addComponent(Modify_btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ViewR_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                     .addComponent(Logout_btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addComponent(Booking_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addComponent(ViewR_btn1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
+                    .addComponent(Booking_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -170,8 +176,6 @@ public class Modify extends javax.swing.JFrame {
                 .addComponent(Modify_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ViewR_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ViewR_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Logout_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -324,10 +328,9 @@ public class Modify extends javax.swing.JFrame {
     }//GEN-LAST:event_Modify_btnActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        this.toBack();
-        setVisible(false);
-        new Main_menu().toFront();
-        new Main_menu().setState(javax.swing.JFrame.NORMAL);
+        Main_menu mm = new Main_menu();
+        mm.show();
+        dispose();
     }//GEN-LAST:event_backActionPerformed
 
     private void checkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutActionPerformed
@@ -515,6 +518,16 @@ private JFrame Checkout_Frame;
         jTable1.revalidate();
     }//GEN-LAST:event_receiptMouseClicked
 
+    private void ViewR_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewR_btnActionPerformed
+
+    }//GEN-LAST:event_ViewR_btnActionPerformed
+
+    private void Booking_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Booking_btnActionPerformed
+        Main_menu mm = new Main_menu();
+        mm.show();
+        dispose();
+    }//GEN-LAST:event_Booking_btnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -586,7 +599,6 @@ private JFrame Checkout_Frame;
     private javax.swing.JLabel Main_title;
     private javax.swing.JButton Modify_btn;
     private javax.swing.JButton ViewR_btn;
-    private javax.swing.JButton ViewR_btn1;
     private javax.swing.JLabel adm_pic;
     private javax.swing.JButton back;
     private javax.swing.JButton checkout;

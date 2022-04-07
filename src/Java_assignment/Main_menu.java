@@ -68,7 +68,6 @@ public class Main_menu extends javax.swing.JFrame {
         ViewR_btn = new javax.swing.JButton();
         Booking_btn = new javax.swing.JButton();
         Logout_btn = new javax.swing.JButton();
-        ViewR_btn1 = new javax.swing.JButton();
         adm_pic = new javax.swing.JLabel();
         Cus_name = new javax.swing.JLabel();
         j_view_btn = new javax.swing.JButton();
@@ -124,8 +123,18 @@ public class Main_menu extends javax.swing.JFrame {
         });
 
         ViewR_btn.setText("View Receipt");
+        ViewR_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewR_btnActionPerformed(evt);
+            }
+        });
 
         Booking_btn.setText("Booking");
+        Booking_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Booking_btnActionPerformed(evt);
+            }
+        });
 
         Logout_btn.setText("Logout");
         Logout_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -134,14 +143,12 @@ public class Main_menu extends javax.swing.JFrame {
             }
         });
 
-        ViewR_btn1.setText("Manage Account");
-
         adm_pic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         adm_pic.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         Cus_name.setBackground(new java.awt.Color(0, 255, 255));
         Cus_name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Cus_name.setText("Admin");
+        Cus_name.setText("Staff");
         Cus_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -156,8 +163,7 @@ public class Main_menu extends javax.swing.JFrame {
                     .addComponent(Modifyd_btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ViewR_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                     .addComponent(Logout_btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addComponent(Booking_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addComponent(ViewR_btn1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
+                    .addComponent(Booking_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -173,9 +179,7 @@ public class Main_menu extends javax.swing.JFrame {
                 .addComponent(Modifyd_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ViewR_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ViewR_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
                 .addComponent(Logout_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -276,7 +280,8 @@ public class Main_menu extends javax.swing.JFrame {
         jv.start_date.setText(st_date);
         jv.end_date.setText(en_date);
         jv.setVisible(true);
-        jv.toFront();  
+        jv.toFront();
+        dispose();
     }//GEN-LAST:event_j_view_btnActionPerformed
 
     private void s_view_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_view_btnActionPerformed
@@ -294,6 +299,7 @@ public class Main_menu extends javax.swing.JFrame {
         sv.end_date.setText(en_date);
         sv.setVisible(true);
         sv.toFront();
+        dispose();
         
         
     }//GEN-LAST:event_s_view_btnActionPerformed
@@ -309,7 +315,18 @@ public class Main_menu extends javax.swing.JFrame {
         Modify md = new Modify();
         md.setVisible(true);
         md.toFront();
+        dispose();
     }//GEN-LAST:event_Modifyd_btnActionPerformed
+
+    private void ViewR_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewR_btnActionPerformed
+        Modify md = new Modify();
+        md.show();
+        dispose();
+    }//GEN-LAST:event_ViewR_btnActionPerformed
+
+    private void Booking_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Booking_btnActionPerformed
+
+    }//GEN-LAST:event_Booking_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -351,7 +368,6 @@ public class Main_menu extends javax.swing.JFrame {
     private javax.swing.JLabel Main_title;
     private javax.swing.JButton Modifyd_btn;
     private javax.swing.JButton ViewR_btn;
-    private javax.swing.JButton ViewR_btn1;
     private javax.swing.JLabel adm_pic;
     private javax.swing.JPanel date_panel;
     public com.toedter.calendar.JDateChooser end_date;

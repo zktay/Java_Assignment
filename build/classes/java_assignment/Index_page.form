@@ -55,9 +55,8 @@
                       <Component id="Exit_btn" min="-2" pref="100" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
               <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="1144" max="32767" attributes="0"/>
+              <EmptySpace pref="1150" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
