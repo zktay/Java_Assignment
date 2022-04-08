@@ -2,4 +2,4 @@ Jungle, Room 2, Jackson, 8847392392, jackson@mail.com, 3197312073, 17-04-2022, 1
 Sea, Room 20, Nicky, 1273271832, Nicky@mail.com, 2313213214421, 08-04-2022, 09-04-2022, 1, RM 395, Reserved
 Sea, Room 18, Ali, 43219787, ali@mail.com, 94871231321, 08-04-2022, 09-04-2022, 1, RM 395, Reserved
 Jungle, Room 9, Jason, 927183721, jason@mail.com, 01283621213, 08-04-2022, 09-04-2022, 1, RM 395, Completed
-Jungle, Room 2, Michelle, 3922131244, michelle@mail.com, 012983621, 08-04-2022, 09-04-2022, 1, RM 395, Reserved
+Jungle, Room 2, Michelle, 3922131244, michelle@mail.com, 012983621, 08-04-2022, 09-04-2022, 1, RM 395, Completed
