@@ -388,7 +388,9 @@ public class Modify extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteActionPerformed
 private JFrame Delete_Frame;
     private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
-        Delete_Frame = new JFrame("Booking");
+        if (JOptionPane.showConfirmDialog( Delete_Frame,"Confirm if you Want to delete ?"," Delete",
+            JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_OPTION){
+            Delete_Frame = new JFrame("Delete");
         int column = jTable1.getColumnModel().getColumnIndexAtX(evt.getX());
         int row = evt.getY()/jTable1.getRowHeight();
         if(row < jTable1.getRowCount() && row >= 0 && column < jTable1.getColumnCount() && column >= 0){
@@ -450,6 +452,7 @@ private JFrame Delete_Frame;
                     e.printStackTrace();
                 } 
             //}   
+            }
         }
         jScrollPane1.repaint();
         jScrollPane1.revalidate();
@@ -685,6 +688,7 @@ private JFrame Checkout_Frame;
                     mf.end_date.setText(eighth);
                     mf.days_count.setText(ninth);
                     mf.total_amount.setText(tenth);
+                    mf.status_box.setSelectedItem(eleventh);
                     mf.setVisible(true);
             }
         }

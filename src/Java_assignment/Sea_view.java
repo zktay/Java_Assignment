@@ -511,11 +511,6 @@ public class Sea_view extends javax.swing.JFrame {
                                                     bf.Sight.setText("Sea");
                                                 }
                                             });
-                                    //}
-                                //}
-                            //}
-                        //}
-                //}
             br.close();
             bk.close();
             }
