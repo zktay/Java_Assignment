@@ -25,6 +25,7 @@ public class Book_Form extends javax.swing.JFrame {
     public Book_Form() {
         
         initComponents();
+        //Centralized Window
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
@@ -281,7 +282,7 @@ public class Book_Form extends javax.swing.JFrame {
         String ic = cus_ic.getText();
         String email = cus_email.getText();
         String contact = cus_contact.getText();
-       
+       //Validation for input
         if(name.isEmpty() || ic.isEmpty() || contact.isEmpty() || email.isEmpty()){
             throw new Exception();
         }

@@ -35,6 +35,7 @@ public class Modify extends javax.swing.JFrame {
      */
     public Modify() {
         initComponents();
+        //Centralized window
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
@@ -393,6 +394,7 @@ private JFrame Delete_Frame;
             Delete_Frame = new JFrame("Delete");
         int column = jTable1.getColumnModel().getColumnIndexAtX(evt.getX());
         int row = evt.getY()/jTable1.getRowHeight();
+        //Get row data from the table
         if(row < jTable1.getRowCount() && row >= 0 && column < jTable1.getColumnCount() && column >= 0){
             Object rowValue = jTable1.getValueAt(row, column);
             DefaultTableModel tableModel = (DefaultTableModel)this.jTable1.getModel();
@@ -400,6 +402,7 @@ private JFrame Delete_Frame;
             int[] selectedRows = jTable1.getSelectedRows();
             for (int i = 0; i< selectedRows.length; i++){
                     //int modelIndex = jTable1.convertRowIndexToModel(selectedRows[i]);
+                    //Get rows and columns from the table
                     String first = jTable1.getModel().getValueAt(selectedRows[i], 1).toString();
                     String second = jTable1.getModel().getValueAt(selectedRows[i], 2).toString();
                     String third = jTable1.getModel().getValueAt(selectedRows[i], 3).toString();
@@ -462,11 +465,13 @@ private JFrame Checkout_Frame;
         Checkout_Frame = new JFrame("Checkout");
         int column = jTable1.getColumnModel().getColumnIndexAtX(evt.getX());
         int row = evt.getY()/jTable1.getRowHeight();
+        //Get row data from the table
         if(row < jTable1.getRowCount() && row >= 0 && column < jTable1.getColumnCount() && column >= 0){
             Object rowValue = jTable1.getValueAt(row, column);
             DefaultTableModel tableModel = (DefaultTableModel)this.jTable1.getModel();
             String lineToRemove = null;
             String lineToAdd = null;
+            //Get rows and column from table
             int[] selectedRows = jTable1.getSelectedRows();
             for (int i = 0; i< selectedRows.length; i++){
                     String first = jTable1.getModel().getValueAt(selectedRows[i], 1).toString();
@@ -493,6 +498,7 @@ private JFrame Checkout_Frame;
                     while((currentLine = reader.readLine()) != null) {
                         String trimmedLine = currentLine.trim();
                         if(trimmedLine.equals(lineToRemove)) continue;
+                        //Skip line when the line appear
                         writer.write(currentLine + System.getProperty("line.separator"));
                         jTable1.repaint();
                         jTable1.revalidate();
@@ -537,6 +543,7 @@ private JFrame Checkout_Frame;
             DefaultTableModel tableModel = (DefaultTableModel)this.jTable1.getModel();
             String lineToView = null;
             int[] selectedRows = jTable1.getSelectedRows();
+            //Get data from row and pass to receipt_form
             for (int i = 0; i< selectedRows.length; i++){
                     String first = jTable1.getModel().getValueAt(selectedRows[i], 1).toString();
                     String second = jTable1.getModel().getValueAt(selectedRows[i], 2).toString();
@@ -588,6 +595,7 @@ private JFrame Checkout_Frame;
             tableModel.removeRow(0);
         }
         
+        //Readline from file, get search value and compare the value. If contains in the line, then return the value in the Jtable
         File file = new File("file/booking.txt");
         try{
             BufferedReader br;
@@ -655,6 +663,7 @@ private JFrame Checkout_Frame;
     }//GEN-LAST:event_modifyActionPerformed
     
     private void modifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modifyMouseClicked
+        
         int column = jTable1.getColumnModel().getColumnIndexAtX(evt.getX());
         int row = evt.getY()/jTable1.getRowHeight();
         if(row < jTable1.getRowCount() && row >= 0 && column < jTable1.getColumnCount() && column >= 0){
@@ -688,6 +697,7 @@ private JFrame Checkout_Frame;
                     mf.end_date.setText(eighth);
                     mf.days_count.setText(ninth);
                     mf.total_amount.setText(tenth);
+                    //Get value from textfile and set as default value
                     mf.status_box.setSelectedItem(eleventh);
                     mf.setVisible(true);
             }
@@ -731,6 +741,7 @@ private JFrame Checkout_Frame;
         });
     }
     public void Table(){
+        //Print table 
         JButton checkout_btn = new JButton();
         checkout_btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

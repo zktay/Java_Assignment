@@ -17,6 +17,7 @@ public class Index_page extends javax.swing.JFrame {
      */
     public Index_page() {
         initComponents();
+        //Centralized Window
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);

@@ -27,6 +27,7 @@ public class Jungle_view extends javax.swing.JFrame {
      */
     public Jungle_view() {
         initComponents();
+        //Centralized Window
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
@@ -326,6 +327,7 @@ public class Jungle_view extends javax.swing.JFrame {
         ArrayList<String> jungle_room = new ArrayList<String>();
         ArrayList<String> VALUES = new ArrayList<String>();
         jPanel2.setLayout(new GridLayout (10, 1, 0, 5));
+        // Get Rooms number from textfile
         try{
             String j_room_data, b_room_data;
             BufferedReader br  = new BufferedReader (new FileReader(file));
@@ -341,6 +343,7 @@ public class Jungle_view extends javax.swing.JFrame {
                         }
                     }
             }
+            // Get Rooms that is in booking.txt
             while ((b_room_data = bk.readLine())!= null){
                 String[] b_array = b_room_data.split("\\n");
                 for (String b : b_array){
@@ -352,6 +355,7 @@ public class Jungle_view extends javax.swing.JFrame {
                         }
                 }
             }
+                        //Loop thru room booking array and compare date
                         for ( int i = 0; i < VALUES.size(); i=i+4){
                             String room = VALUES.get(i);
                             String s_first_date = VALUES.get(i + 1);
@@ -374,6 +378,7 @@ public class Jungle_view extends javax.swing.JFrame {
                                 //System.out.print("Filter Room Error/ Succes\n");
                             }
                         }
+                                    //Display rooms that is available in the array
                                     for (int i = 0; i < jungle_room.size(); i++) {
                                             Border border = BorderFactory.createLineBorder(Color.gray);
                                             JPanel panel = new JPanel();
@@ -413,6 +418,7 @@ public class Jungle_view extends javax.swing.JFrame {
                                             jPanel2.add(panel);
                                             pack_name.setText(jungle_room.get(i));
                                             String room_filter = pack_name.getText();
+                                            // Pictures for the room
                                             switch (room_filter){
                                                 case "Room 1":
                                                     pack_pic.setIcon(picture("1"));
@@ -459,6 +465,7 @@ public class Jungle_view extends javax.swing.JFrame {
                                             * */
                                             pack_price.setText("RM 350");
                                             final int i0 = i;
+                                            //button action for booking action
                                             b1.addActionListener(new ActionListener() {
                                                 public void actionPerformed(ActionEvent e) {
                                                     Book_Form bf = new Book_Form();

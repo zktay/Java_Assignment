@@ -24,6 +24,7 @@ public class Main_menu extends javax.swing.JFrame {
      */
     public Main_menu(){
         initComponents();
+        //Centralized window
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
@@ -52,7 +53,7 @@ public class Main_menu extends javax.swing.JFrame {
         ImageIcon sea_pic = new ImageIcon(sea2);
         s_view_btn.setIcon(sea_pic);
         
-        
+        // Set initial date
         Date date = new Date();
         DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
         Calendar cal = Calendar.getInstance();                  
@@ -290,6 +291,7 @@ public class Main_menu extends javax.swing.JFrame {
         DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
         String st_date = dt.format(get_st_date);
         String en_date = dt.format(get_en_date);
+        //Pass variable to Room object
         jv.Room(get_st_date, get_en_date);
         jv.start_date.setText(st_date);
         jv.end_date.setText(en_date);
@@ -308,6 +310,7 @@ public class Main_menu extends javax.swing.JFrame {
         DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
         String st_date = dt.format(get_st_date);
         String en_date = dt.format(get_en_date);
+        //Pass variable to Room object
         sv.Room(get_st_date, get_en_date);
         sv.start_date.setText(st_date);
         sv.end_date.setText(en_date);

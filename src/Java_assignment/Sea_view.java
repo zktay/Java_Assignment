@@ -31,6 +31,7 @@ public class Sea_view extends javax.swing.JFrame {
     
     public Sea_view() {
         initComponents();
+        //Centralized window
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
@@ -344,6 +345,7 @@ public class Sea_view extends javax.swing.JFrame {
         ArrayList<String> sea_room = new ArrayList<>();
         ArrayList<String> VALUES = new ArrayList<>();
         jPanel2.setLayout(new GridLayout (10, 1, 0, 5));
+        //Get rooms from sea room
         try{
             String s_room_data, b_room_data;
             BufferedReader br  = new BufferedReader (new FileReader(file));
@@ -360,6 +362,7 @@ public class Sea_view extends javax.swing.JFrame {
                         
                     }
             }
+            // Read line in booking.txt
             while ((b_room_data = bk.readLine())!= null){
                 String[] b_array = b_room_data.split("\\n");
                 for (String b : b_array){
@@ -376,6 +379,7 @@ public class Sea_view extends javax.swing.JFrame {
                 }
             }
                     //for (String a : VALUES){
+                    //Compare the date, if in the range then remove from array
                         for ( int i = 0; i < VALUES.size(); i=i+4){
                             String room = VALUES.get(i);
                             String s_first_date = VALUES.get(i + 1);
@@ -403,6 +407,7 @@ public class Sea_view extends javax.swing.JFrame {
                             //while ((s_room_data = br.readLine())!= null){
                             //    String[] s_array = s_room_data.split("\\n");
                             //    for (String a : s_array){
+                            //Displaying the panel to show each rooms
                                     for (int i = 0; i < sea_room.size(); i++) {
                                         //String[] s_room;
                                         //s_room = a.split(", ");
@@ -444,6 +449,7 @@ public class Sea_view extends javax.swing.JFrame {
                                             jPanel2.add(panel);
                                             pack_name.setText(sea_room.get(i));
                                             String room_filter = pack_name.getText();
+                                            // Custom picture directory for each rooms
                                             switch (room_filter){
                                                 case "Room 11":
                                                     pack_pic.setIcon(picture("11"));
@@ -491,6 +497,7 @@ public class Sea_view extends javax.swing.JFrame {
                                             //pack_pic.setIcon(new ImageIcon(imgList.get(i)));
                                             pack_price.setText("RM 350");
                                             final int i0 = i;
+                                            //Booking function action
                                             b1.addActionListener(new ActionListener() {
                                                 public void actionPerformed(ActionEvent e) {
                                                     Book_Form bf = new Book_Form();
@@ -563,7 +570,7 @@ public class Sea_view extends javax.swing.JFrame {
                starting_date.after(e) && ending_date.before(e);
     }
     
-    
+    //Picture directory
     public ImageIcon picture(String ROOM){
         ImageIcon sea_pic1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource(PIC_FOLDER + ROOM + ".jpg")));
         Image s_pic1 = sea_pic1.getImage();
