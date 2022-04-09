@@ -39,6 +39,20 @@ public class Main_menu extends javax.swing.JFrame {
         Image adm_pic2 = adm_pic1.getScaledInstance(adm_pic.getWidth(), adm_pic.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon admin_pic = new ImageIcon(adm_pic2);
         adm_pic.setIcon(admin_pic);
+        
+        ImageIcon jungle = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("pic/jungle1.jpg")));
+        Image jungle1 = jungle.getImage();
+        Image jungle2 = jungle1.getScaledInstance(j_view_btn.getWidth(), j_view_btn.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon jungle_pic = new ImageIcon(jungle2);
+        j_view_btn.setIcon(jungle_pic);
+        
+        ImageIcon sea = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("pic/sea.jpg")));
+        Image sea1 = sea.getImage();
+        Image sea2 = sea1.getScaledInstance(s_view_btn.getWidth(), s_view_btn.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon sea_pic = new ImageIcon(sea2);
+        s_view_btn.setIcon(sea_pic);
+        
+        
         Date date = new Date();
         DateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
         Calendar cal = Calendar.getInstance();                  
